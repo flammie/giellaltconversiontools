@@ -1,0 +1,54 @@
+[tool.poetry]
+name = "giellaltconversiontools"
+version = "0.1.0"
+description = "Converting linguistic annotation formats for giellalt projects"
+authors = ["Flammie A Pirinen <flammie@iki.fi>"]
+readme = "README.md"
+homepage = "https://divvun.github.io/giellaltconversiontools"
+repository = "https://github.com/divvun/giellaltconversiontools"
+license = "GPL-3.0"
+
+[tool.poetry.scripts]
+giella2unimorph = "giellaltconversiontools.giella2unimorph:main"
+ud2lexc = "giellaltconversiontools.ud2lexc:main"
+unimorph2fstlookup = "giellaltconversiontools.unimorph2fstlookup:main"
+unimorph2lexc = "giellaltconversiontools.unimorph2lexc:main"
+unimorph2yamltest = "giellaltconversiontools.unimorph2yamltest:main"
+unimorphevalanalyser = "giellaltconversiontools.unimorphevalanalyser:main"
+unimorphevalgenerator = "giellaltconversiontools.unimorphevalgenerator:main"
+vislcg2ud = "giellaltconversiontools.vislcg2ud:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 79
+target-version = "py39"
+
+[tool.ruff.lint]
+select = [
+    "F", #Pyflakes
+    "B", #flake8-bugbear
+    "A", #flake8-builtins 
+    "C4", #flake8-comprehensions
+    "ERA", #eradicate
+    "I", #isort
+    "PT", #flake8-pytest-style
+    "C90", #mccabe
+    "N", #pep8-naming
+    "E", #pycodestyle error
+    "PL" #Pylint
+]
+ignore = ["A003"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+pyhfst = "^1.3.0"
+
+[tool.poetry.group.build.dependencies]
+setuptools = "^68.0.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.12.2"
+
