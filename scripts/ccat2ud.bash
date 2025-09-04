@@ -18,5 +18,5 @@ if ! test -f "$ANALYSER" ; then
 fi
 ANALYSED=$(basename "$CORPUS" .xml).cg3text
 ccat "$CORPUS" | "$ANALYSER" > "$ANALYSED"
-python vislcg2ud.py -i "$ANALYSED" \
+python -m giellaltconversiontools.vislcg2ud -i "$ANALYSED" \
     -o "$(basename "$ANALYSED" .cg3text).conllu"

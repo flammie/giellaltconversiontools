@@ -28,6 +28,6 @@ for c in a b c d e f g h i j k l m n o p q r s t u v x y z å ä ö š ž ; do
         hfst-fst2fst -f olw -o generator.$c.hfst
         hfst-fst2strings -c 0 generator.$c.hfst > generated.$c
     echo $c
-    uniq < generated.$c | "$(dirname "$0")"/convert.py
+    uniq < generated.$c | python -m giellaltconversiontools.giella2unimorph
 done
 

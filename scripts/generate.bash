@@ -64,7 +64,8 @@ cat "$@" | while read -r l ; do
         hfst-fst2fst -f olw -o generator.hfst
     timeout 10s hfst-fst2strings generator.hfst > generated.strings
     if test -s generated.strings ; then
-        uniq < generated.strings | "$(dirname "$0")"/convert.py
+        uniq < generated.strings |\
+            python -m giellaltconversiontools.giella2unimorph
     else
         echo "FAILED TO GENERATE $lemma $gtpos"
         echo "$lemma" | hfst-lookup -q "$analyser"

@@ -31,4 +31,5 @@ echo "$cyclicRE +UglyHack | $lemmaRE [? - [ $cyclicRE ] ]* ;" |
         hfst-fst2fst -f olw -o generator.$lemma.hfst
         hfst-fst2strings -c 0 generator.$lemma.hfst > generated.$lemma
 echo $lemma
-uniq < generated.$lemma | "$(dirname "$0")"/convert.py
+uniq < generated.$lemma |\
+    python -m giellaltconversiontools.giella2unimorph
