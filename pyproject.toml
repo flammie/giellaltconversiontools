@@ -15,7 +15,6 @@ unimorph2fstlookup = "giellaltconversiontools.unimorph2fstlookup:main"
 unimorph2lexc = "giellaltconversiontools.unimorph2lexc:main"
 unimorph2yamltest = "giellaltconversiontools.unimorph2yamltest:main"
 unimorphevalanalyser = "giellaltconversiontools.unimorphevalanalyser:main"
-unimorphevalgenerator = "giellaltconversiontools.unimorphevalgenerator:main"
 vislcg2ud = "giellaltconversiontools.vislcg2ud:main"
 
 [build-system]
