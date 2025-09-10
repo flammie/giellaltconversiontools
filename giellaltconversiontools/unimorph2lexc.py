@@ -1,26 +1,36 @@
 #!/usr/bin/env python3
-'''CLI program to turn unimorph data to GiellaLT morph tester yaml.'''
+'''CLI program to turn unimorph data to lexc format with giellalt tags.'''
 import sys
+from argparse import ArgumentParser, FileType
 
+from .lexc import print_lexc_preamble
 from .tagmaps import unimorph2giella
 
 
 def main():
     '''Minimal CLI for unimorph2lexc.'''
-    print('Multichar_Symbols')
-    print('+N +A +V')
-    print('+Sg +Pl +Du')
-    print('+Nom +Acc +Dat +Gen +Loc +Ine +Ill +Abl +Lat +Ela')
-    print('+Com +Abe +Tra +Ins +Ess')
-    print('+Prs +Prt +Ind +Pot +Cond +Imprt')
-    print('+Sg1 +Sg2 +Sg3 +Du1 +Du2 +Du3 +Pl1 +Pl2 +Pl3')
+    ap = ArgumentParser()
+    ap.add_argument("-i", "--input", metavar="INFILE", type=open,
+                    dest="infile", help="read unimorph data from INFILE")
+    ap.add_argument("-L", "--lexc", metavar="LEXCFILE", type=FileType("w"),
+                    dest="lexcfile", help="write lexc to LEXCFILE")
+    ap.add_argument("-v", "--verbose", action="store_true", default=False,
+                    help="print verbosely while processing")
+    opts = ap.parse_args()
+    if not opts.lexcfile:
+        opts.lexcfile = sys.stdout
+        print("Writing to <stdout>", file=sys.stderr)
+    if not opts.infile:
+        opts.infile = sys.stdin
+        print("Reading from <stdin>", file=sys.stderr)
+    print_lexc_preamble(opts.lexcfile)
     lemmas = 0
     tokens = 0
     suspicious = 0
     prevlemma = None
-    for line in sys.stdin:
+    for line in opts.infile:
         if not line or line.strip() == '':
-            print()
+            print(file=opts.lexcfile)
             continue
         # gravitáció      gravitáción     N;ON+ESS;SG
         fields = line.strip().split('\t')
@@ -47,8 +57,8 @@ def main():
         elif '|' in surf:
             suspicious += 1
         giellatags = unimorph2giella(unimorphs)
-        print(lemma, ''.join(giellatags), ':', surf, sep='')
-
+        print(lemma, ''.join(giellatags), ':', surf,
+              "\t#\t;", sep='', file=opts.lexcfile)
 
 
 if __name__ == '__main__':
