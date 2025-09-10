@@ -333,37 +333,63 @@ GIELLA2UNIMORPH = {
 
 UNIMORPH2GIELLA = {
     "N": ["+N"],
+    "PROPN": ["+N", "+Prop"],
     "V": ["+V"],
     "ADJ": ["+A"],
+    "ADV": ["+Adv"],
+    "ADP": ["+Adp"],
+    "PRO": ["+Pron"],
+    "NUM": ["+Num"],
+    "CONJ": ["+C"],
+    "DET": ["+Det"],
+    "INTJ": ["+Interj"],
+    "PART": ["+Part"],
+    "Cop": ["+Cop"],
     "NEUT": ["+Neu"],
     "MASC": ["+Msc"],
     "FEM": ["+Fem"],
     "MASC+FEM": ["+Common"],
+    "MASC+FEM+NEUT": ["+Common"],
+    "MASC+NEUT": ["+Ut"],
+    "ERG": ["+Erg"],
+    "ABS": ["+Abs"],
+    "OBL": ["+Obl"],
     "GEN": ["+Gen"],
     "COM": ["+Com"],
     "ON+ESS": ["+Ses"],
     "FRML": ["+Ess"],
     "ESS": ["+Ess"],
+    "BYWAY": ["+Ess"],
     "INAN": ["+Inan"],
+    "HUM": ["+Sem/Human"],
     "ANIM": ["+Anim"],
     "PRIV": ["+Abe"],
     "PRT": ["+Par"],
     "INS": ["+Ins"],
     "IN+ESS": ["+Ine"],
     "NOM": ["+Nom"],
+    "SUB": ["+Sub"],
     "ON+ALL": ["+Sub"],
     "AT+ALL": ["+All"],
-    "PRP": ["+Loc"],
+    "ALL": ["+All"],
+    "PRP": ["+Instr"],
+    "LOC": ["+Loc"],
+    "VOC": ["+Voc"],
     "INST": ["+Inst"],
     "TRANS": ["+Tra"],
+    "PROL": ["+Prl"],
     "TERM": ["+Term"],
+    "COMPV": ["+Compv"],
+    "REL": ["+Relv"],
     "ON+ABL": ["+Del"],
     "IN+ABL": ["+Ela"],
     "IN+ALL": ["+Ill"],
     "DAT": ["+Dat"],
     "ACC": ["+Acc"],
+    "AT": ["+Loc"],
     "AT+ESS": ["+Ade"],
     "AT+ABL": ["+Abl"],
+    "ABL": ["+Abl"],
     "SG": ["+Sg"],
     "DU": ["+Du"],
     "PL": ["+Pl"],
@@ -371,29 +397,174 @@ UNIMORPH2GIELLA = {
     "IND": ["+Ind"],
     "PRS": ["+Prs"],
     "PST": ["+Prt"],
+    "RCT": [],
     "PRF": ["+Perf"],
     "FUT": ["+Fut"],
+    "NFUT": ["+Prs"],  # usually
+    "PROG": ["+Prog"],
+    "HOD": ["+Hod"],
+    "0": ["+Pe0"],
     "1": ["+1"],
     "2": ["+2"],
     "3": ["+3"],
+    "4": ["+Pe4"],
+    "INCL": ["+Incl"],
+    "EXCL": ["+Excl"],
     "INDF": [],  # unmarked in giellatags
-    "GEADJ": ["+Gen"],
+    "GEADJ": ["+Gen"],  # bug in fin
     "DEF": ["+Def"],
     "NDEF": ["+Ind"],
-    "NFIN": ["+Ger"],
+    "FIN": [],
+    "NFIN": ["+Inf"],
+    "TR": ["+TV"],
+    "INTR": ["+IV"],
     "ACT": ["+Actv"],
     "PASS": ["+Pasv"],
     "COND": ["+Cond"],
+    "OPT": ["+Opt"],
     "POT": ["+Pot"],
     "IMP": ["+Imprt"],
+    "FREQ": ["+Freq"],
+    "CAUS": ["+Caus"],
+    "DEB": ["+Deb"],
+    "ADM": ["+Adm"],
     "SBJV": ["+Subj"],
     "V.CVB": ["+V", "+Der/Adv"],
+    "V.MSDR": ["+V", "+Der/Noun"],
+    "V.PTCP": ["+V", "+Der/Adj"],
     "CMPR": ["+Comp"],
     "SPRL": ["+Sup"],
     "NEG": ["+Neg"],
     "POS": [],  # ["+Pos"]
     "LGSPEC": [],
     "LGSPEC1": [],
+    "LGSPEC2": [],
+    "LGSPEC3": [],
+    "LGSPEC4": [],
+    "LGSPEC5": [],
+    "LGSPEC6": [],
+    "LGSPEC7": [],
+    "LGSPEC8": [],
+    "LGSPEC9": [],
+    "LGSPEC10": [],  # 9 is allowed maximum...
+    "LGSPEC0": [],
+    "LGSPEC01": [],
+    "LGSPEC11": [],
+    "LGSPEC12": [],
+    "LGSPEC13": [],
+    "LGSPEC02": [],
+    "LGSPEC03": [],
+    "LGSPEC04": [],
+    "LGSPEC05": [],
+    "LGSPEC06": [],
+    "LGSPEC07": [],
+    "LGSPEC08": [],
+    "LGSPEC09": [],
+    "PSSD": ["+Px"],
+    "PSS0": ["+Px0"],
+    "PSS1S": ["+PxSg1"],
+    "PSS2S": ["+PxSg2"],
+    "PSS2SM": ["+PxSg2Msc"],
+    "PSS3S": ["+PxSg3"],
+    "PSS3SM": ["+PxSg3Msc"],
+    "PSS1D": ["+PxDu1"],
+    "PSS2D": ["+PxDu2"],
+    "PSS3D": ["+PxDu3"],
+    "PSS1P": ["+PxPl1"],
+    "PSS1PE": ["+PxPl1Excl"],
+    "PSS1PI": ["+PxPl1Incl"],
+    "PSS2P": ["+PxPl2"],
+    "PSS3P": ["+PxPl3"],
+    "PSS3": ["+Px3"],
+    "PSS4": ["+Px4"],
+    "PFV": ["+Pfv"],
+    "TOP": ["+Topic"],
+    "FOC": ["+Focus"],
+    "HAB": ["+Hab"],
+    "INFM": ["+Infm"],
+    "REAL": ["+Real"],
+    "IPFV": ["+Imperf"],
+    "POL": ["+Polite"],
+    "FORM": ["+Formal"],
+    "FOREG": ["+Formal"],
+    "COL": ["+Coll"],
+    "INV": ["+Inverse"],
+    "IRR": ["+Irreal"],
+    "PROSP": ["+Prosp"],
+    "RMT": ["+Remote"],
+    "MED": ["+Med"],
+    "PROX": ["+Prox"],
+    "IMMED": ["+Immed"],
+    "QUOT": ["+Quot"],
+    "APPL": ["+Appl"],
+    "DECL": ["+Decl"],
+    "ARGIO3": [],   # ???
+    "ARGNO1S": ["+ScSg1"],
+    "ARGNO2S": ["+ScSg2"],
+    "ARGNO3S": ["+ScSg3"],
+    "ARGABS3": ["+AcSg3"],
+    "ARG3": ["+Sc3"],
+    "ARGDU": ["+ScDu"],
+    "ARGABSSG": ["+AcSg"],
+    "ARGAC3SG": ["+AcSg3"],
+    "ARGAC2DU": ["+AcDu2"],
+    "ARGAC3DU": ["+AcDu3"],
+    "ARGER1P": ["+EcPl1"],
+    # Unsorted / misspelt / bugs:
+    "NO3P": [],  # ?
+    "NO1PI": [],  # ?
+    "NO3SI": [],  # ?
+    "LIT": [],  # ?
+    "Elev": [],  # ?
+    "DRCT": [],  # ?
+    "SIM": [],  # ?
+    "ITER": [],  # ?
+    "OBLIG": [],  # ?
+    "INT": [],  # ?
+    "INF": [],  # ?
+    "REMT": [],  # ?
+    "CF": [],  # ?
+    "PC": [],  # ?
+    "ER": [],  # ?
+    "ALN": [],  # ?
+    "V.NFIN": ["+Error"],  # ?
+    "V.PCTP": ["+Error"],  # ?
+    "V.PCTP.PST": ["+Error"],  # ?
+    "SUBJ": [],  # ?
+    "DUR": [],  # ?
+    " N": ["+Error"],  # ?
+    "STAT": [],  # ?
+    "WEAK": [],  # ?
+    "PRES": ["+Error"],  # ?
+    "SIMMA": [],  # ?
+    "NO3": [],  # ?
+    "NO3F": [],  # ?
+    "NO3SA": [],  # ?
+    "AB": [],  # ?
+    "BANTU3": [],  # ?
+    "AGFOC": [],  # ?
+    "INFR": [],  # ?
+    "DISTR": [],  # ?
+    "NPST": [],  # ?
+    "PTCP": [],  # ?
+    "NFH": [],  # ?
+    "MID": [],  # ?
+    "SS": [],  # ?
+    "EXCLV": [],  # ?
+    "PURP": [],  # ?
+    "EQTV": [],  # ?
+    "INTEN": [],  # ?
+    "MASV": [],  # ?
+    "SEMEL": [],  # ?
+    "LgSPEC8": ["+Error"],  # ?
+    "PRS/FUT": [],  # ?
+    "PRS/PST": [],  # ?
+    "NOM/ACC": [],  # ?
+    "DAT/GEN": [],  # ?
+    "GEN/DAT": [],  # ?
+    "MASC/FEM": [],  # ?
+    "PSS3S/PSS3P": [],  # ?
+    "LGSPEC1/LGSPEC2": [],  # ?
 }
 
 def giella2unimorph(tags):
@@ -534,6 +705,14 @@ def unimorph2giella(unimorphs: str) -> list:
     for unimorph in unimorphs.split(";"):
         if unimorph in UNIMORPH2GIELLA:
             giellatags += UNIMORPH2GIELLA[unimorph]
+        elif "+" in unimorph:
+            for subtag in unimorph.split("+"):
+                if subtag in UNIMORPH2GIELLA:
+                    giellatags += UNIMORPH2GIELLA[subtag]
+                else:
+                    print(f"missing unimorph {subtag} in {unimorph} "
+                          f"in {unimorphs}")
+                    sys.exit(1)
         elif unimorph == "V.PTCP":
             giellatags += ["+V"]
             if "PRS" in unimorphs:
