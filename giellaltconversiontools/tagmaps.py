@@ -116,836 +116,555 @@ IGNORED_GENS = [
     "^BlockCap"
 ]
 
+# simple 1-to-many mappings
+GIELLA2UNIMORPH = {
+    "Adv": ["ADV"],
+    "Num": ["NUM"],
+    "Po": ["ADP"],
+    "Pr": ["ADP"],
+    "A": ["ADJ"],
+    "Interj": ["INTJ"],
+    "CC": ["CONJ"],
+    "CS": ["CONJ"],
+    "Pron": ["PRO"],
+    "Neu": ["NEUT"],
+    "Fem": ["FEM"],
+    "Msc": ["MASC"],
+    "Common": ["MASC+FEM"],
+    "Gen": ["GEN"],
+    "Com": ["COM"],
+    "Ses": ["ON+ESS"],
+    "Ess": ["FRML"],  # XXX: ESS?
+    "Inan": ["INAN"],
+    "Anim": ["ANIM"],
+    "Abe": ["PRIV"],  # XXX: ABE?
+    "Par": ["PRT"],
+    "Ins": ["INS"],
+    "Ine": ["IN+ESS"],
+    "Nom": ["NOM"],
+    "Sub": ["ON+ALL"],
+    "All": ["AT+ALL"],  # XXX: ALL?
+    "Loc": ["PRP"],
+    "Inst": ["INST"],
+    "Tra": ["TRANS"],
+    "Del": ["ON+ABL"],
+    "Ela": ["IN+ABL"],
+    "Ill": ["IN+ALL"],
+    "Dat": ["DAT"],
+    "Acc": ["ACC"],
+    "Ade": ["AT+ESS"],
+    "Abl": ["AT+ABL"],
+    "Sg": ["SG"],
+    "Du": ["DU"],
+    "Pl": ["PL"],
+    "Indic": ["IND"],
+    "Ind": ["IND"],  # XXX: can sometimes be indef?
+    "Prs": ["PRS"],
+    "Prt": ["PST"],
+    "Perf": ["PRF"],
+    "Fut": ["FUT"],
+    "Sg1": ["1', 'SG"],
+    "Sg2": ["2', 'SG"],
+    "Sg3": ["3', 'SG"],
+    "Du1": ["1', 'DU"],
+    "Du2": ["2', 'DU"],
+    "Du3": ["3', 'DU"],
+    "Pl1": ["1', 'PL"],
+    "Pl2": ["2', 'PL"],
+    "Pl3": ["3', 'PL"],
+    "4": ["4"],
+    "Pe4": ["4"],
+    "Ips": ["IMPRS"],
+    "ScSg1": ["ARGNO1S"],
+    "ScSg2": ["ARGNO2S"],
+    "ScSg3": ["ARGNO3S"],
+    "ScPl1": ["ARGNO1S"],
+    "ScPl2": ["ARGNO2S"],
+    "ScPl3": ["ARGNO3S"],
+    "OcSg1": ["ARGAC1S"],
+    "OcSg2": ["ARGAC2S"],
+    "OcSg3": ["ARGAC3S"],
+    "OcPl1": ["ARGAC1S"],
+    "OcPl2": ["ARGAC2S"],
+    "OcPl3": ["ARGAC3S"],
+    "PxSP3": ["PSS3"],
+    "Px3": ["PSS3"],
+    "PxSg1": ["PSS1S"],
+    "PxSg2": ["PSS2S"],
+    "PxSg3": ["PSS3S"],
+    "PxDu1": ["PSS1D"],
+    "PxDu2": ["PSS2D"],
+    "PxDu3": ["PSS3D"],
+    "PxPl1": ["PSS1P"],
+    "PxPl2": ["PSS2P"],
+    "PxPl3": ["PSS3P"],
+    "Def": ["DEF"],
+    "Indef": ["NDEF"],
+    "VGen": ["V.MSDR', 'GEN"],
+    "VAbess": ["V.CVB', 'ABE"],
+    "NomAg": ["V.MSDR', 'LGSPEC/agent"],
+    "AgPrc": ["V.PTCP', 'LGSPEC/agent"],
+    "NegPrc": ["V.PTCP', 'NEG"],
+    "NomAct": ["V.MSDR"],
+    "INF": ["NFIN"],
+    "Inf": ["NFIN"],
+    "Ger": ["V.CVB', 'LGSPEC/ger"],  # XXX: GER?
+    "Actio": ["V.MSDR', 'LGSPEC/actio"],  # XXX: ???
+    "Sup": ["V.CVB', 'LGSPEC/sup"],  # Supine, not superlative or superessive
+    "InfA": ["NFIN"],  # fin
+    "InfE": ["V.CVB"],  # fin
+    "Inf3": ["V.CVB"],  # fkv
+    "InfMa": ["V.CVB"],  # fin
+    "A_Hum": ["ADJ"],  # fin?
+    "Adv-": ["ADV"],
+    "Actv": ["ACT"],
+    "Act": ["ACT"],
+    "Pasv": ["PASS"],
+    "Pass": ["PASS"],
+    "Pss": ["PASS"],
+    "Cond": ["COND"],
+    "Pot": ["POT"],
+    "Imp": ["IMP"],
+    "Imprt": ["IMP"],
+    "ImprtII": ["IMP"],
+    "Cau": ["CAUS"],
+    "Subj": ["SBJV"],
+    "Opt": ["OPT"],  # Desiderative optative
+    "Des": ["OPT"],  # Desiderative optative
+    "Oblig": ["OBGLIG"],
+    "Interr": ["INT"],  # XXX: ABE?
+    "Der/Comp": ["CMPR"],
+    "Comp": ["CMPR"],
+    "Compar": ["CMPR"],  # fkv
+    "Superl": ["SPRL"],
+    "Der/Superl": ["SPRL"],
+    "Der/PassS": ["PASS"],
+    "Attr": ["LGSPEC9/ATTR"],
+    "Pred": ["LGSPEC9/PRED"],
+    "Aff": ["POS"],
+    "Neg": ["NEG"],
+    "NegCnd": ["NEG', 'COND"],
+    "NegCndSub": ["NEG', 'COND"],
+    "Pos": ["POS"],
+    "Qu": ["LGSPEC1/?"],
+    "Qst": ["LGSPEC1/?"],
+    "Use/Rus": ["DIAL"],
+    "Use/Circ": ["XXXCIRC"],
+    "Use/Dial": ["DIAL"],
+    "Guess": ["XXX"],
+    "??": ["XXX"],
+    "TODO": ["XXX"],
+    "Dial": ["DIAL"],
+    "South": ["DIAL?"],
+    "Orth/Colloq": ["DIAL?"],
+    "Conneg": ["NEG"],  # XXX
+    "ConNeg": ["NEG"],  # XXX
+    "ConNegII": ["NEG"],  # XXX
+    "IV": ["INTR"],
+    "TV": ["TR"],
+    "Impers": ["IMPRS"],
+    "Reflex": ["REFL"],
+    "Refl": ["REFL"],
+    "Recipr": ["RECP"],
+    "Distr": ["REM"],
+    "Dist": ["REM"],
+    "Prox": ["PROXM"],
+    "TruncPrefix": ["LGSPEC/prefix-"],
+    "Pref": ["LGSPEC/prefix-"],
+    "Prefix": ["LGSPEC/prefix-"],
+    "PrsPrc": ["PRS"],
+    "PrtPrc": ["PST"],
+    "PrfPrc": ["PRFV"],
+    "Prc/Telic": ["LGSPEC/telic"],  # myv
+    "Foc": ["LGSPEC/foc"],
+    "Clit": ["LGSPEC/clit"],
+    "Clt": ["LGSPEC/clit"],
+    "Long": [],
+    "Allegro": [],
+    "Sh": [],
+    "Largo": [],
+    "ABBR-": [],
+    "ABBR": [],
+    "ACRO": [],
+    "LEFT": [],
+    "RIGHT": [],
+    "Dim/ke": [],
+    "Dummytag": [],
+    "S": [],
+    "Quote": [],
+    "CLB": [],
+    "Bahuvrihi": [],  # myv
+    "AssocColl": [],  # myv
+    "Adn": [],  # myv
+    "Conj": [],  # myv
+    "Prec": [],  # myv
+    "Quot": [],  # est
+    "Prel": [],  # fit
+    "Dem": [],  # FIXME
+    "Pers": [],  # FIXME
+    "Disc": [],
+    "ACR": [],
+    "Coll": [],
+    "Subqst": [],
+    "Rel": [],  # is not: Relative case or Relative comparator
+    "Ord": [],
+    "Prop": [],  # handled elsehwere
+    "Der1": [],
+    "Der2": [],
+    "v1": [],
+    "v2": [],
+    "v3": [],
+    "v4": [],
+    "v5": [],
+    "v6": [],
+    "v7": [],
+    "v8": [],
+    "v9": [],
+    "G1": [],
+    "G2": [],
+    "G3": [],
+    "G4": [],
+    "G5": [],
+    "G6": [],
+    "G7": [],
+    "G8": [],
+    "G9": [],
+}
 
 def giella2unimorph(tags):
     unimorphtags = []
-    for giella in tags.split('+'):
-        if giella == '':
+    for giella in tags.split("+"):
+        if giella in GIELLA2UNIMORPH:
+            unimorphtags += GIELLA2UNIMORPH[giella]
+        elif giella == "":
             continue
-        elif giella == 'N':
-            if 'Prop' in tags:
-                unimorphtags += ['PROPN']
+        elif giella == "N":
+            if "Prop" in tags:
+                unimorphtags += ["PROPN"]
             else:
-                unimorphtags += ['N']
-        elif giella == 'Adv':
-            unimorphtags += ['ADV']
-        elif giella == 'Num':
-            unimorphtags += ['NUM']
-        elif giella == 'Po':
-            unimorphtags += ['ADP']
-        elif giella == 'Pr':
-            unimorphtags += ['ADP']
-        elif giella == 'A':
-            unimorphtags += ['ADJ']
-        elif giella == 'Interj':
-            unimorphtags += ['INTJ']
-        elif giella == 'CC':
-            unimorphtags += ['CONJ']
-        elif giella == 'CS':
-            unimorphtags += ['CONJ']
-        elif giella == 'Pron':
-            unimorphtags += ['PRO']
-        elif giella == 'Neu':
-            unimorphtags += ['NEUT']
-        elif giella == 'Fem':
-            unimorphtags += ['FEM']
-        elif giella == 'Msc':
-            unimorphtags += ['MASC']
-        elif giella == 'Common':
-            unimorphtags += ['MASC+FEM']
-        elif giella == 'Gen':
-            unimorphtags += ['GEN']
-        elif giella == 'Com':
-            unimorphtags += ['COM']
-        elif giella == 'Ses':
-            unimorphtags += ['ON+ESS']
-        elif giella == 'Ess':
-            unimorphtags += ['FRML']  # XXX: ESS?
-        elif giella == 'Inan':
-            unimorphtags += ['INAN']
-        elif giella == 'Anim':
-            unimorphtags += ['ANIM']
-        elif giella == 'Abe':
-            unimorphtags += ['PRIV']  # XXX: ABE?
-        elif giella == 'Par':
-            unimorphtags += ['PRT']
-        elif giella == 'Ins':
-            unimorphtags += ['INS']
-        elif giella == 'Ine':
-            unimorphtags += ['IN+ESS']
-        elif giella == 'Nom':
-            unimorphtags += ['NOM']
-        elif giella == 'Sub':
-            unimorphtags += ['ON+ALL']
-        elif giella == 'All':
-            unimorphtags += ['AT+ALL']  # XXX: ALL?
-        elif giella == 'Loc':
-            unimorphtags += ['PRP']
-        elif giella == 'Inst':
-            unimorphtags += ['INST']
-        elif giella == 'Tra':
-            unimorphtags += ['TRANS']
-        elif giella == 'Del':
-            unimorphtags += ['ON+ABL']
-        elif giella == 'Ela':
-            unimorphtags += ['IN+ABL']
-        elif giella == 'Ill':
-            unimorphtags += ['IN+ALL']
-        elif giella == 'Dat':
-            unimorphtags += ['DAT']
-        elif giella == 'Acc':
-            unimorphtags += ['ACC']
-        elif giella == 'Ade':
-            unimorphtags += ['AT+ESS']
-        elif giella == 'Abl':
-            unimorphtags += ['AT+ABL']
-        elif giella == 'Sg':
-            unimorphtags += ['SG']
-        elif giella == 'Du':
-            unimorphtags += ['DU']
-        elif giella == 'Pl':
-            unimorphtags += ['PL']
-        elif giella == 'Indic':
-            unimorphtags += ['IND']
-        elif giella == 'Ind':
-            unimorphtags += ['IND']  # XXX: can sometimes be indef?
-        elif giella == 'Prs':
-            unimorphtags += ['PRS']
-        elif giella == 'Prt':
-            unimorphtags += ['PST']
-        elif giella == 'Perf':
-            unimorphtags += ['PRF']
-        elif giella == 'Fut':
-            unimorphtags += ['FUT']
-        elif giella == 'Sg1':
-            unimorphtags += ['1', 'SG']
-        elif giella == 'Sg2':
-            unimorphtags += ['2', 'SG']
-        elif giella == 'Sg3':
-            unimorphtags += ['3', 'SG']
-        elif giella == 'Du1':
-            unimorphtags += ['1', 'DU']
-        elif giella == 'Du2':
-            unimorphtags += ['2', 'DU']
-        elif giella == 'Du3':
-            unimorphtags += ['3', 'DU']
-        elif giella == 'Pl1':
-            unimorphtags += ['1', 'PL']
-        elif giella == 'Pl2':
-            unimorphtags += ['2', 'PL']
-        elif giella == 'Pl3':
-            unimorphtags += ['3', 'PL']
-        elif giella == '4':
-            unimorphtags += ['4']
-        elif giella == 'Pe4':
-            unimorphtags += ['4']
-        elif giella == 'Ips':
-            unimorphtags += ['IMPRS']
-        elif giella == 'ScSg1':
-            unimorphtags += ['ARGNO1S']
-        elif giella == 'ScSg2':
-            unimorphtags += ['ARGNO2S']
-        elif giella == 'ScSg3':
-            unimorphtags += ['ARGNO3S']
-        elif giella == 'ScPl1':
-            unimorphtags += ['ARGNO1S']
-        elif giella == 'ScPl2':
-            unimorphtags += ['ARGNO2S']
-        elif giella == 'ScPl3':
-            unimorphtags += ['ARGNO3S']
-        elif giella == 'OcSg1':
-            unimorphtags += ['ARGAC1S']
-        elif giella == 'OcSg2':
-            unimorphtags += ['ARGAC2S']
-        elif giella == 'OcSg3':
-            unimorphtags += ['ARGAC3S']
-        elif giella == 'OcPl1':
-            unimorphtags += ['ARGAC1S']
-        elif giella == 'OcPl2':
-            unimorphtags += ['ARGAC2S']
-        elif giella == 'OcPl3':
-            unimorphtags += ['ARGAC3S']
-        elif giella == 'PxSg1':
-            unimorphtags += ['PSS1S']
-        elif giella == 'PxSg2':
-            unimorphtags += ['PSS2S']
-        elif giella == 'PxSg3':
-            unimorphtags += ['PSS3S']
-        elif giella == 'PxDu1':
-            unimorphtags += ['PSS1D']
-        elif giella == 'PxDu2':
-            unimorphtags += ['PSS2D']
-        elif giella == 'PxDu3':
-            unimorphtags += ['PSS3D']
-        elif giella == 'PxPl1':
-            unimorphtags += ['PSS1P']
-        elif giella == 'PxPl2':
-            unimorphtags += ['PSS2P']
-        elif giella == 'PxPl3':
-            unimorphtags += ['PSS3P']
-        elif giella == 'PxSP3':
-            unimorphtags += ['PSS3']
-        elif giella == 'Px3':
-            unimorphtags += ['PSS3']
-        elif giella == 'Def':
-            unimorphtags += ['DEF']
-        elif giella == 'Indef':
-            unimorphtags += ['NDEF']
-        elif giella == 'PxSg1':
-            unimorphtags += ['PSS1S']
-        elif giella == 'PxSg2':
-            unimorphtags += ['PSS2S']
-        elif giella == 'PxSg3':
-            unimorphtags += ['PSS3S']
-        elif giella == 'PxDu1':
-            unimorphtags += ['PSS1D']
-        elif giella == 'PxDu2':
-            unimorphtags += ['PSS2D']
-        elif giella == 'PxDu3':
-            unimorphtags += ['PSS3D']
-        elif giella == 'PxPl1':
-            unimorphtags += ['PSS1P']
-        elif giella == 'PxPl2':
-            unimorphtags += ['PSS2P']
-        elif giella == 'PxPl3':
-            unimorphtags += ['PSS3P']
-        elif giella == 'Def':
-            unimorphtags += ['DEF']
-        elif giella == 'Indef':
-            unimorphtags += ['NDEF']
-        elif giella == 'V':
-            if '+PrsPrc' in tags:
-                unimorphtags += ['V.PTCP']
-            elif '+PrtPrc' in tags:
-                unimorphtags += ['V.PTCP']
-            elif '+PrfPrc' in tags:
-                unimorphtags += ['V.PTCP']
+                unimorphtags += ["N"]
+        elif giella == "V":
+            if "+PrsPrc" in tags:
+                unimorphtags += ["V.PTCP"]
+            elif "+PrtPrc" in tags:
+                unimorphtags += ["V.PTCP"]
+            elif "+PrfPrc" in tags:
+                unimorphtags += ["V.PTCP"]
             else:
-                unimorphtags += ['V']
-        elif giella == 'PrsPrc':
-            unimorphtags += ['PRS']
-        elif giella == 'PrtPrc':
-            unimorphtags += ['PST']
-        elif giella == 'PrfPrc':
-            unimorphtags += ['PRFV']
-        elif giella == 'Prc/Telic':
-            unimorphtags += ['LGSPEC4/telic']  # myv
-        elif giella == 'VGen':
-            unimorphtags += ['V.MSDR', 'GEN']
-        elif giella == 'VAbess':
-            unimorphtags += ['V.CVB', 'ABE']
-        elif giella == 'NomAg':
-            unimorphtags += ['V.MSDR', 'LGSPEC/agent']
-        elif giella == 'AgPrc':
-            unimorphtags += ['V.PTCP', 'LGSPEC/agent']
-        elif giella == 'NegPrc':
-            unimorphtags += ['V.PTCP', 'NEG']
-        elif giella == 'NomAct':
-            unimorphtags += ['V.MSDR']
-        elif giella == 'INF':
-            unimorphtags += ['NFIN']
-        elif giella == 'Inf':
-            unimorphtags += ['NFIN']
-        elif giella == 'Ger':
-            unimorphtags += ['V.CVB', 'LGSPEC/ger']  # XXX: GER?
-        elif giella == 'Actio':
-            unimorphtags += ['V.MSDR', 'LGSPEC/actio']  # XXX: ???
-        elif giella == 'Sup':
-            unimorphtags += ['V.CVB', 'LGSPEC/sup']  # Supine, not superlative or superessive
-        elif giella == 'InfA':
-            unimorphtags += ['NFIN']  # fin
-        elif giella == 'InfE':
-            unimorphtags += ['V.CVB']  # fin
-        elif giella == 'Inf3':
-            unimorphtags += ['V.CVB']  # fkv
-        elif giella == 'InfMa':
-            unimorphtags += ['V.CVB']  # fin
-        elif giella == 'A_Hum':
-            unimorphtags += ['ADJ']  # fin?
-        elif giella == 'Adv-':
-            unimorphtags += ['ADV']
-        elif giella == 'Actv':
-            unimorphtags += ['ACT']
-        elif giella == 'Act':
-            unimorphtags += ['ACT']
-        elif giella == 'Pasv':
-            unimorphtags += ['PASS']
-        elif giella == 'Pass':
-            unimorphtags += ['PASS']
-        elif giella == 'Pss':
-            unimorphtags += ['PASS']
-        elif giella == 'Cond':
-            unimorphtags += ['COND']
-        elif giella == 'Pot':
-            unimorphtags += ['POT']
-        elif giella == 'Imp':
-            unimorphtags += ['IMP']
-        elif giella == 'Imprt':
-            unimorphtags += ['IMP']
-        elif giella == 'ImprtII':
-            unimorphtags += ['IMP']
-        elif giella == 'Cau':
-            unimorphtags += ['CAUS']
-        elif giella == 'Subj':
-            unimorphtags += ['SBJV']
-        elif giella == 'Opt':
-            unimorphtags += ['OPT']  # Desiderative optative
-        elif giella == 'Des':
-            unimorphtags += ['OPT']  # Desiderative optative
-        elif giella == 'Oblig':
-            unimorphtags += ['OBGLIG']
-        elif giella == 'Interr':
-            unimorphtags += ['INT']  # XXX: ABE?
-        elif giella in ['Der1', 'Der2']:
+                unimorphtags += ["V"]
+        elif giella.startswith("Err/"):
+            unimorphtags += ["TYPO"]
+        elif giella.startswith("Errr/"):
+            unimorphtags += ["TYPO"]
+        elif giella.startswith("Der/"):  # some der's should be handled before
+            unimorphtags += ["XXXDER" + giella[4:]]
             continue
-        elif giella == 'Der/Comp':
-            unimorphtags += ['CMPR']
-        elif giella == 'Comp':
-            unimorphtags += ['CMPR']
-        elif giella == 'Compar':
-            unimorphtags += ['CMPR']  # fkv
-        elif giella == 'Superl':
-            unimorphtags += ['SPRL']
-        elif giella == 'Der/Superl':
-            unimorphtags += ['SPRL']
-        elif giella == 'Der/PassS':
-            unimorphtags += ['PASS']
-        elif giella == 'Attr':
-            unimorphtags += ['LGSPEC9/ATTR']
-        elif giella == 'Pred':
-            unimorphtags += ['LGSPEC9/PRED']
-        elif giella == 'Aff':
-            unimorphtags += ['POS']
-        elif giella == 'Neg':
-            unimorphtags += ['NEG']
-        elif giella == 'NegCnd':
-            unimorphtags += ['NEG', 'COND']
-        elif giella == 'NegCndSub':
-            unimorphtags += ['NEG', 'COND']
-        elif giella == 'Pos':
-            unimorphtags += ['POS']
-        elif giella.startswith('Err/'):
-            unimorphtags += ['TYPO']
-        elif giella.startswith('Errr/'):
-            unimorphtags += ['TYPO']
-        elif giella.startswith('Der/'):
-            unimorphtags += ['XXXDER' + giella[4:]]
-            continue  # NB: handle SOME ders before this
-        elif giella == 'Long':
+        elif giella.startswith("Pref-"):
             continue
-        elif giella == 'Allegro':
+        elif giella.startswith("Qst/"):
+            unimorphtags += ["LGSPEC/?" + giella[4:]]
+        elif giella.startswith("Sem"):
             continue
-        elif giella == 'Sh':
-            continue
-        elif giella == 'Largo':
-            continue
-        elif giella == 'ABBR-':
-            continue
-        elif giella == 'ABBR':
-            continue
-        elif giella == 'ACRO':
-            continue
-        elif giella == 'ACR':
-            continue
-        elif giella == 'LEFT':
-            continue
-        elif giella == 'RIGHT':
-            continue
-        elif giella == 'Coll':
-            continue
-        elif giella == 'Qu':
-            unimorphtags += ['LGSPEC1/?']
-        elif giella == 'Qst':
-            unimorphtags += ['LGSPEC1/?']
-        elif giella.startswith('Qst/'):
-            unimorphtags += ['LGSPEC1/?' + giella[4:]]
-        elif giella == 'Subqst':
-            continue
-        elif giella == 'Rel':
-            continue  # is not: Relative case or Relative comparator
-        elif giella == 'Dim/ke':
-            continue
-        elif giella == 'Ord':
-            continue
-        elif giella in ['v1', 'v2', 'v3', 'v4', 'v5', 'v6']:
-            continue
-        elif giella in ['G3', 'G7']:
-            continue
-        elif giella.startswith('Sem'):
-            continue
-        elif giella == 'Dummytag':
-            continue
-        elif giella == 'S':
-            continue
-        elif giella == 'Quote':
-            continue
-        elif giella == 'CLB':
-            continue
-        elif giella == 'Prop':
-            continue  # handled elsehwere
-        elif giella.startswith('Cmp'):
-            unimorphtags += ['XXXCOMPOUND']
+        elif giella.startswith("Cmp"):
+            unimorphtags += ["XXXCOMPOUND"]
             continue  # ?
-        elif giella == 'Use/Rus':
-            unimorphtags += ['DIAL']
-        elif giella == 'Use/Circ':
-            unimorphtags += ['XXXCIRC']
-        elif giella == 'Use/Dial':
-            unimorphtags += ['DIAL']
-        elif giella.startswith('Use/'):
-            unimorphtags += ['XXX' + giella[4:]]
-        elif giella.startswith('Usage/'):
-            unimorphtags += ['XXX' + giella[6:]]
-        elif giella == 'Guess':
-            unimorphtags += ['XXX']
-        elif giella == '??':
-            unimorphtags += ['XXX']
-        elif giella == 'TODO':
-            unimorphtags += ['XXX']
-        elif giella == 'Dial':
-            unimorphtags += ['DIAL']
-        elif giella == 'South':
-            unimorphtags += ['DIAL?']
-        elif giella == 'Orth/Colloq':
-            unimorphtags += ['DIAL?']
-        elif giella == 'Conneg':
-            unimorphtags += ['NEG']  # XXX
-        elif giella == 'ConNeg':
-            unimorphtags += ['NEG']  # XXX
-        elif giella == 'ConNegII':
-            unimorphtags += ['NEG']  # XXX
-        elif giella == 'IV':
-            unimorphtags += ['INTR']
-        elif giella == 'TV':
-            unimorphtags += ['TR']
-        elif giella == 'Impers':
-            unimorphtags += ['IMPRS']
-        elif giella == 'Reflex':
-            unimorphtags += ['REFL']
-        elif giella == 'Refl':
-            unimorphtags += ['REFL']
-        elif giella == 'Recipr':
-            unimorphtags += ['RECP']
-        elif giella == 'Distr':
-            unimorphtags += ['REM']
-        elif giella == 'Dist':
-            unimorphtags += ['REM']
-        elif giella == 'Prox':
-            unimorphtags += ['PROXM']
-        elif giella == 'Bahuvrihi':
-            # myv
+        elif giella.startswith("Use/"):
+            unimorphtags += ["XXX" + giella[4:]]
+        elif giella.startswith("Usage/"):
+            unimorphtags += ["XXX" + giella[6:]]
+        elif giella in ["0,0", "0,1"]:
             continue
-        elif giella == 'AssocColl':
-            # myv
-            continue
-        elif giella in ['0,0', '0,1']:
-            continue
-        elif giella in ['F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9',
-                        'F00', 'F01', 'F02', 'F03', 'F04', 'F05', 'F06', 'F07',
-                        'F10', 'F11', 'F12', 'F13', 'F14', 'F15', 'F16', 'F08',
-                        'F17', 'F18', 'F19', 'F20', 'F21', 'F22', 'F23', 'F24',
-                        'F25', 'F26', 'F27', 'F28', 'F29', 'F30', 'F31', 'F09',
-                        'F32', 'F33', 'F34', 'F35', 'F36', 'F37', 'F38', 'F0',
-                        'F39', 'F40', 'F41', 'F42', 'F43', 'F44', 'F45',
-                        'F46', 'F47', 'F48', 'F49', 'F50', 'F51', 'F52', 'F53',
-                        'F54', 'F55', 'F56', 'F57', 'F58', 'F59', 'F60', 'F61',
-                        'F62', 'F63', 'F64', 'F65', 'F66', 'F67', 'F68',
-                        'F69', 'F70', 'F71', 'F72', 'F73', 'F74', 'F75', 'F76',
-                        'F77', 'F78', 'F79', 'F80', 'F81', 'F82', 'F83', 'F84',
-                        'F85', 'F86', 'F87', 'F88', 'F89', 'F90', 'F91', 'F92',
-                        'F93', 'F94', 'F95', 'F96', 'F97', 'F98', 'F99',
-                        'F100', 'Enter', 'Alt', 'Shift',
-                        'B', 'C', 'E', 'D', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
-                        'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'W', 'X',
-                        'Y', 'Z',
-                        'Š', 'Ž', 'Ä', 'Õ', 'Ö', 'Ü', '0']:
+        elif giella in ["F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9",
+                        "F00", "F01", "F02", "F03", "F04", "F05", "F06", "F07",
+                        "F10", "F11", "F12", "F13", "F14", "F15", "F16", "F08",
+                        "F17", "F18", "F19", "F20", "F21", "F22", "F23", "F24",
+                        "F25", "F26", "F27", "F28", "F29", "F30", "F31", "F09",
+                        "F32", "F33", "F34", "F35", "F36", "F37", "F38", "F0",
+                        "F39", "F40", "F41", "F42", "F43", "F44", "F45",
+                        "F46", "F47", "F48", "F49", "F50", "F51", "F52", "F53",
+                        "F54", "F55", "F56", "F57", "F58", "F59", "F60", "F61",
+                        "F62", "F63", "F64", "F65", "F66", "F67", "F68",
+                        "F69", "F70", "F71", "F72", "F73", "F74", "F75", "F76",
+                        "F77", "F78", "F79", "F80", "F81", "F82", "F83", "F84",
+                        "F85", "F86", "F87", "F88", "F89", "F90", "F91", "F92",
+                        "F93", "F94", "F95", "F96", "F97", "F98", "F99",
+                        "F100", "Enter", "Alt", "Shift",
+                        "B", "C", "E", "D", "F", "G", "H", "I", "J", "K", "L",
+                        "M", "N", "O", "P", "Q", "R", "S", "T", "U", "W", "X",
+                        "Y", "Z",
+                        "Š", "Ž", "Ä", "Õ", "Ö", "Ü", "0"]:
             # est
             continue
-        elif giella == 'Adn':
-            # myv
+        elif giella.startswith("Foc/"):
+            unimorphtags += ["LGSPEC1/" + giella[4:]]
+        elif giella.startswith("Clit/"):
+            unimorphtags += ["LGSPEC1/" + giella[5:]]
+        elif giella.startswith("Clt/"):
+            unimorphtags += ["LGSPEC2/" + giella[4:]]
+        elif giella.startswith("OLang/"):
             continue
-        elif giella == 'Conj':
-            # myv
+        elif giella.startswith("Gram/"):
             continue
-        elif giella == 'Prec':
-            # myv
+        elif giella.startswith("Hom"):
             continue
-        elif giella == 'Quot':
-            # est
-            continue
-        elif giella == 'Prel':
-            # fit
-            continue
-        elif giella == 'Dem':
-            continue  # FIXME
-        elif giella == 'Pers':
-            continue  # FIXME
-        elif giella == 'Disc':
-            continue
-        elif giella == 'Foc':
-            unimorphtags += ['LGSPEC1/UnnamedFoc']
-        elif giella.startswith('Foc/'):
-            unimorphtags += ['LGSPEC1/' + giella[4:]]
-        elif giella == 'Clit':
-            unimorphtags += ['LGSPEC1/UnnamedClit']
-        elif giella.startswith('Clit/'):
-            unimorphtags += ['LGSPEC1/' + giella[5:]]
-        elif giella == 'Clt':
-            unimorphtags += ['LGSPEC2']
-        elif giella.startswith('Clt/'):
-            unimorphtags += ['LGSPEC2/' + giella[4:]]
-        elif giella.startswith('OLang/'):
-            continue
-        elif giella.startswith('Gram/'):
-            continue
-        elif giella.startswith('Hom'):
-            continue
-        elif giella == 'TruncPrefix':
-            unimorphtags += ['LGSPEC/prefix-']
-        elif giella == 'Pref':
-            unimorphtags += ['LGSPEC/prefix-']
-        elif giella == 'Prefix':
-            unimorphtags += ['LGSPEC/prefix-']
-        elif giella.startswith('Pref-'):
-            unimorphtags += ['LGSPEC/prefix-']
-        elif giella.startswith('Genmiessi'):
-            print('SOmething broken here½!', tags)
-        elif '@' in giella:
-            print('SOmething broken here½!', tags)
-        elif giella.startswith('NErr/'):
-            print('SOmething broken here½!', tags)
-            unimorphtags += ['TYPO']
-        elif giella.startswith('AErr/'):
-            print('SOmething broken here½!', tags)
-            unimorphtags += ['TYPO']
-        elif '<cnjcoo>' in giella:
-            print('SOmething broken here½!', tags)
-        elif '<actv>' in giella:
-            print('SOmething broken here½!', tags)
-        elif '<gen>' in giella:
-            print('SOmething broken here½!', tags)
-        elif 'N224-1-9' in giella:
-            print('SOmething broken here½!', tags)
-        elif '#222-5-19' in giella:
-            print('SOmething broken here½!', tags)
-        elif '/-' in giella:
-            print('SOmething broken here½!', tags)
-        elif giella in ['a', 'b', 'i', 't', 'd', 's', 'n', 'ä', 'ö']:
-            print('SOmething broken here½!', tags)
-        elif giella in ['Ne', 'Ni', 'Nte', 'Ntee', 'Nt', 'Nti', 'Na', 'No',
-                        'N-', 'c']:
-            print('SOmething broken here½!', tags)
-        elif 'elekriski' in giella:
-            print('SOmething broken here½!', tags)
-        elif giella == 'VGen':
-            continue  # FIXME
-        elif giella == 'VAbess':
-            continue  # FIXME
-        elif giella == 'NomAg':
-            continue  # FIXME
-        elif giella == 'Inf':
-            unimorphtags += ['NFIN']
-        elif giella == 'Ger':
-            unimorphtags += ['NFIN']  # XXX: GER?
-        elif giella == 'Actio':
-            unimorphtags += ['GER']  # XXX: ???
-        elif giella == 'Actv':
-            unimorphtags += ['ACT']
-        elif giella == 'Pasv':
-            unimorphtags += ['PASS']
-        elif giella == 'Cond':
-            unimorphtags += ['COND']
-        elif giella == 'Pot':
-            unimorphtags += ['POT']
-        elif giella == 'Imprt':
-            unimorphtags += ['IMP']
-        elif giella == 'Subj':
-            unimorphtags += ['SBJV']
-        elif giella == 'Interr':
-            unimorphtags += ['INT']  # XXX: ABE?
-        elif giella == 'Der/Comp':
-            unimorphtags += ['CMPR']
-        elif giella == 'Comp':
-            unimorphtags += ['CMPR']
-        elif giella == 'Sup':
-            unimorphtags += ['SPRL']
-        elif giella == 'Der/Superl':
-            unimorphtags += ['SPRL']
-        elif giella == 'Der/PassS':
-            unimorphtags += ['PASS']
-        elif giella == 'Attr':
-            unimorphtags += ['ATTR']
-        elif giella == 'Neg':
-            unimorphtags += ['NEG']
-        elif giella == 'Pos':
-            unimorphtags += ['POS']
-        elif giella.startswith('Err/'):
-            unimorphtags += ['TYPO']
-        elif giella.startswith('Der/'):
+        elif giella.startswith("Genmiessi"):
+            print("SOmething broken here½!", tags)
+        elif "@" in giella:
+            print("SOmething broken here½!", tags)
+        elif giella.startswith("NErr/"):
+            print("SOmething broken here½!", tags)
+            unimorphtags += ["TYPO"]
+        elif giella.startswith("AErr/"):
+            print("SOmething broken here½!", tags)
+            unimorphtags += ["TYPO"]
+        elif "<cnjcoo>" in giella:
+            print("SOmething broken here½!", tags)
+        elif "<actv>" in giella:
+            print("SOmething broken here½!", tags)
+        elif "<gen>" in giella:
+            print("SOmething broken here½!", tags)
+        elif "N224-1-9" in giella:
+            print("SOmething broken here½!", tags)
+        elif "#222-5-19" in giella:
+            print("SOmething broken here½!", tags)
+        elif "/-" in giella:
+            print("SOmething broken here½!", tags)
+        elif giella in ["a", "b", "i", "t", "d", "s", "n", "ä", "ö"]:
+            print("SOmething broken here½!", tags)
+        elif giella in ["Ne", "Ni", "Nte", "Ntee", "Nt", "Nti", "Na", "No",
+                        "N-", "c"]:
+            print("SOmething broken here½!", tags)
+        elif "elekriski" in giella:
+            print("SOmething broken here½!", tags)
+        elif giella.startswith("Err/"):
+            unimorphtags += ["TYPO"]
+        elif giella.startswith("Der/"):
             continue  # NB: handle SOME ders before this
-        elif giella == 'Allegro':
-            continue
-        elif giella == 'ACR':
-            continue
-        elif giella == 'Coll':
-            continue
-        elif giella == 'Qst':
-            continue
-        elif giella == 'Subqst':
-            continue
-        elif giella == 'Rel':
-            continue  # is not: Relative case or Relative comparator
-        elif giella == 'Ord':
-            continue
-        elif giella in ['v1', 'v2', 'v3']:
-            continue
-        elif giella in ['G3', 'G7']:
-            continue
-        elif giella.startswith('Sem'):
-            continue
-        elif giella == 'Prop':
-            continue  # handled elsehwere
-        elif giella.startswith('Cmp'):
+        elif giella.startswith("Cmp"):
             continue  # ?
-        elif giella == 'South':
-            unimorphtags += ['DIAL?']
-        elif giella == 'ConNeg':
-            unimorphtags += ['NEG']  # XXX
-        elif giella == 'ConNegII':
-            unimorphtags += ['NEG']  # XXX
-        elif giella == 'IV':
-            continue  # not marked in current unimorph
-            # unimorphtags += ['INTR']
-        elif giella == 'TV':
-            continue  # not marked in current unimorph
-            unimorphtags += ['TR']
-        elif giella == 'Recipr':
-            unimorphtags += ['RECP']
-        elif giella == 'Dem':
-            continue  #  FIXME
-        elif giella == 'Pers':
-            continue  #  FIXME
-        elif giella.startswith('Foc/'):
-            unimorphtags += ['LGSPEC1/' + giella[5:]]
+        elif giella.startswith("Sem"):
+            continue
+        elif giella.startswith("Foc/"):
+            unimorphtags += ["LGSPEC1/" + giella[5:]]
         else:
             print("missing giella mapping for", giella, "in tags")
             sys.exit(2)
     # shuffle and patch
-    CASESWITHOUTNUMBERS = ['FRML', 'COM']
+    CASESWITHOUTNUMBERS = ["FRML", "COM"]
     for casetag in CASESWITHOUTNUMBERS:
-        if casetag in unimorphtags and 'SG' not in unimorphtags and\
-                'PL' not in unimorphtags:
-            unimorphtags += ['SG']
-    MOODSWITHEXTRATENSE = ['COND', 'POT']
+        if casetag in unimorphtags and "SG" not in unimorphtags and\
+                "PL" not in unimorphtags:
+            unimorphtags += ["SG"]
+    MOODSWITHEXTRATENSE = ["COND", "POT"]
     for mood in MOODSWITHEXTRATENSE:
-        if mood in unimorphtags and 'PRS' in unimorphtags:
-            unimorphtags.remove('PRS')
-        elif mood in unimorphtags and 'PST' in unimorphtags:
-            unimorphtags.remove('PST')
-    return ';'.join(unimorphtags)
+        if mood in unimorphtags and "PRS" in unimorphtags:
+            unimorphtags.remove("PRS")
+        elif mood in unimorphtags and "PST" in unimorphtags:
+            unimorphtags.remove("PST")
+    return ";".join(unimorphtags)
 
 
 def unimorph2giella(unimorphs: str) -> list:
     giellatags = []
-    for unimorph in unimorphs.split(';'):
-        if unimorph == 'N':
-            giellatags += ['+N']
-        elif unimorph == 'V':
-            giellatags += ['+V']
-        elif unimorph == 'ADJ':
-            giellatags += ['+A']
-        elif unimorph == 'NEUT':
-            giellatags += ['+Neu']
-        elif unimorph == 'MASC':
-            giellatags += ['+Msc']
-        elif unimorph == 'FEM':
-            giellatags += ['+Fem']
-        elif unimorph == 'MASC+FEM':
-            giellatags += ['+Common']
-        elif unimorph == 'GEN':
-            giellatags += ['+Gen']
-        elif unimorph == 'COM':
-            giellatags += ['+Com']
-        elif unimorph == 'ON+ESS':
-            giellatags += ['+Ses']
-        elif unimorph == 'FRML':
-            giellatags += ['+Ess']
-        elif unimorph == 'ESS':
-            giellatags += ['+Ess']
-        elif unimorph == 'INAN':
-            giellatags += ['+Inan']
-        elif unimorph == 'ANIM':
-            giellatags += ['+Anim']
-        elif unimorph == 'PRIV':
-            giellatags += ['+Abe']
-        elif unimorph == 'PRT':
-            giellatags += ['+Par']
-        elif unimorph == 'INS':
-            giellatags += ['+Ins']
-        elif unimorph == 'IN+ESS':
-            giellatags += ['+Ine']
-        elif unimorph == 'NOM':
-            giellatags += ['+Nom']
-        elif unimorph == 'ON+ALL':
-            giellatags += ['+Sub']
-        elif unimorph == 'AT+ALL':
-            giellatags += ['+All']
-        elif unimorph == 'PRP':
-            giellatags += ['+Loc']
-        elif unimorph == 'INST':
-            giellatags += ['+Inst']
-        elif unimorph == 'TRANS':
-            giellatags += ['+Tra']
-        elif unimorph == 'TERM':
-            giellatags += ['+Term']
-        elif unimorph == 'ON+ABL':
-            giellatags += ['+Del']
-        elif unimorph == 'IN+ABL':
-            giellatags += ['+Ela']
-        elif unimorph == 'IN+ALL':
-            giellatags += ['+Ill']
-        elif unimorph == 'DAT':
-            giellatags += ['+Dat']
-        elif unimorph == 'ACC':
-            giellatags += ['+Acc']
-        elif unimorph == 'AT+ESS':
-            giellatags += ['+Ade']
-        elif unimorph == 'AT+ABL':
-            giellatags += ['+Abl']
-        elif unimorph == 'SG':
-            giellatags += ['+Sg']
-        elif unimorph == 'DU':
-            giellatags += ['+Du']
-        elif unimorph == 'PL':
-            giellatags += ['+Pl']
-        elif unimorph == 'SG+PL':
-            # giellatags += ['+Sg/Pl']
+    for unimorph in unimorphs.split(";"):
+        if unimorph == "N":
+            giellatags += ["+N"]
+        elif unimorph == "V":
+            giellatags += ["+V"]
+        elif unimorph == "ADJ":
+            giellatags += ["+A"]
+        elif unimorph == "NEUT":
+            giellatags += ["+Neu"]
+        elif unimorph == "MASC":
+            giellatags += ["+Msc"]
+        elif unimorph == "FEM":
+            giellatags += ["+Fem"]
+        elif unimorph == "MASC+FEM":
+            giellatags += ["+Common"]
+        elif unimorph == "GEN":
+            giellatags += ["+Gen"]
+        elif unimorph == "COM":
+            giellatags += ["+Com"]
+        elif unimorph == "ON+ESS":
+            giellatags += ["+Ses"]
+        elif unimorph == "FRML":
+            giellatags += ["+Ess"]
+        elif unimorph == "ESS":
+            giellatags += ["+Ess"]
+        elif unimorph == "INAN":
+            giellatags += ["+Inan"]
+        elif unimorph == "ANIM":
+            giellatags += ["+Anim"]
+        elif unimorph == "PRIV":
+            giellatags += ["+Abe"]
+        elif unimorph == "PRT":
+            giellatags += ["+Par"]
+        elif unimorph == "INS":
+            giellatags += ["+Ins"]
+        elif unimorph == "IN+ESS":
+            giellatags += ["+Ine"]
+        elif unimorph == "NOM":
+            giellatags += ["+Nom"]
+        elif unimorph == "ON+ALL":
+            giellatags += ["+Sub"]
+        elif unimorph == "AT+ALL":
+            giellatags += ["+All"]
+        elif unimorph == "PRP":
+            giellatags += ["+Loc"]
+        elif unimorph == "INST":
+            giellatags += ["+Inst"]
+        elif unimorph == "TRANS":
+            giellatags += ["+Tra"]
+        elif unimorph == "TERM":
+            giellatags += ["+Term"]
+        elif unimorph == "ON+ABL":
+            giellatags += ["+Del"]
+        elif unimorph == "IN+ABL":
+            giellatags += ["+Ela"]
+        elif unimorph == "IN+ALL":
+            giellatags += ["+Ill"]
+        elif unimorph == "DAT":
+            giellatags += ["+Dat"]
+        elif unimorph == "ACC":
+            giellatags += ["+Acc"]
+        elif unimorph == "AT+ESS":
+            giellatags += ["+Ade"]
+        elif unimorph == "AT+ABL":
+            giellatags += ["+Abl"]
+        elif unimorph == "SG":
+            giellatags += ["+Sg"]
+        elif unimorph == "DU":
+            giellatags += ["+Du"]
+        elif unimorph == "PL":
+            giellatags += ["+Pl"]
+        elif unimorph == "SG+PL":
+            # giellatags += ["+Sg/Pl"]
             pass
-        elif unimorph == 'IND':
-            giellatags += ['+Ind']
-        elif unimorph == 'PRS':
-            giellatags += ['+Prs']
-        elif unimorph == 'PST':
-            giellatags += ['+Prt']
-        elif unimorph == 'PRF':
-            giellatags += ['+Perf']
-        elif unimorph == 'FUT':
-            giellatags += ['+Fut']
-        elif unimorph == '1':
-            giellatags += ['+1']
-        elif unimorph == '2':
-            giellatags += ['+2']
-        elif unimorph == '3':
-            giellatags += ['+3']
-        elif unimorph == 'INDF':
+        elif unimorph == "IND":
+            giellatags += ["+Ind"]
+        elif unimorph == "PRS":
+            giellatags += ["+Prs"]
+        elif unimorph == "PST":
+            giellatags += ["+Prt"]
+        elif unimorph == "PRF":
+            giellatags += ["+Perf"]
+        elif unimorph == "FUT":
+            giellatags += ["+Fut"]
+        elif unimorph == "1":
+            giellatags += ["+1"]
+        elif unimorph == "2":
+            giellatags += ["+2"]
+        elif unimorph == "3":
+            giellatags += ["+3"]
+        elif unimorph == "INDF":
             pass  # unmarked in giellatags
-        elif unimorph == 'GEADJ':
-            giellatags += ['+Gen']
-        elif unimorph == 'DEF':
-            giellatags += ['+Def']
-        elif unimorph == 'NDEF':
-            giellatags += ['+Ind']
-        elif unimorph == 'V.PTCP':
-            giellatags += ['+V']
-            if 'PRS' in unimorphs:
-                giellatags += ['+PrsPrc']
-            elif 'PST' in unimorphs:
-                giellatags += ['+PrtPrc']
-            elif 'FUT' in unimorphs:
-                giellatags += ['+Fut']
+        elif unimorph == "GEADJ":
+            giellatags += ["+Gen"]
+        elif unimorph == "DEF":
+            giellatags += ["+Def"]
+        elif unimorph == "NDEF":
+            giellatags += ["+Ind"]
+        elif unimorph == "V.PTCP":
+            giellatags += ["+V"]
+            if "PRS" in unimorphs:
+                giellatags += ["+PrsPrc"]
+            elif "PST" in unimorphs:
+                giellatags += ["+PrtPrc"]
+            elif "FUT" in unimorphs:
+                giellatags += ["+Fut"]
             else:
-                giellatags += ['+Drv/Ptcp']
-        elif unimorph == 'NFIN':
-            giellatags += '+Ger'
-        elif unimorph == 'ACT':
-            giellatags += ['+Actv']
-        elif unimorph == 'PASS':
-            giellatags += ['+Pasv']
-        elif unimorph == 'COND':
-            giellatags += ['+Cond']
-        elif unimorph == 'POT':
-            giellatags += ['+Pot']
-        elif unimorph == 'IMP':
-            giellatags += ['+Imprt']
-        elif unimorph == 'SBJV':
-            giellatags += ['+Subj']
-        elif unimorph == 'V.CVB':
-            giellatags += ['+V']
-            giellatags += ['+Der/Adv']
-        elif unimorph == 'CMPR':
-            giellatags += ['+Comp']
-        elif unimorph == 'SPRL':
-            giellatags += ['+Sup']
-        elif unimorph == 'NEG':
-            giellatags += ['+Neg']
-        elif unimorph == 'POS':
-            # giellatags += ['+Pos']
+                giellatags += ["+Drv/Ptcp"]
+        elif unimorph == "NFIN":
+            giellatags += "+Ger"
+        elif unimorph == "ACT":
+            giellatags += ["+Actv"]
+        elif unimorph == "PASS":
+            giellatags += ["+Pasv"]
+        elif unimorph == "COND":
+            giellatags += ["+Cond"]
+        elif unimorph == "POT":
+            giellatags += ["+Pot"]
+        elif unimorph == "IMP":
+            giellatags += ["+Imprt"]
+        elif unimorph == "SBJV":
+            giellatags += ["+Subj"]
+        elif unimorph == "V.CVB":
+            giellatags += ["+V"]
+            giellatags += ["+Der/Adv"]
+        elif unimorph == "CMPR":
+            giellatags += ["+Comp"]
+        elif unimorph == "SPRL":
+            giellatags += ["+Sup"]
+        elif unimorph == "NEG":
+            giellatags += ["+Neg"]
+        elif unimorph == "POS":
+            # giellatags += ["+Pos"]
             pass
-        elif unimorph == 'LGSPEC':
+        elif unimorph == "LGSPEC":
             pass
-        elif unimorph == 'LGSPEC1':
+        elif unimorph == "LGSPEC1":
             pass
         else:
-            print('missing unimorph mapping for:', unimorph)
+            print("missing unimorph mapping for:", unimorph)
             sys.exit(2)
     reorg = list()
     for ape in giellatags:
-        if ape in ['+N', '+V', '+A']:
+        if ape in ["+N", "+V", "+A"]:
             reorg += [ape]
             break
-    if reorg == ['+N']:
+    if reorg == ["+N"]:
         for ape in giellatags:
-            if ape in ['+Sg', '+Pl', '+Du']:
+            if ape in ["+Sg", "+Pl", "+Du"]:
                 reorg += [ape]
         for ape in giellatags:
             if ape not in reorg:
                 reorg += [ape]
-    elif reorg == ['+V']:
+    elif reorg == ["+V"]:
         for ape in giellatags:
             if ape not in reorg:
                 reorg += [ape]
-        if '+1' in reorg and '+Sg' in reorg:
-            reorg += ['+Sg1']
-            reorg.remove('+1')
-            reorg.remove('+Sg')
-        elif '+2' in reorg and '+Sg' in reorg:
-            reorg += ['+Sg2']
-            reorg.remove('+2')
-            reorg.remove('+Sg')
-        elif '+3' in reorg and '+Sg' in reorg:
-            reorg += ['+Sg3']
-            reorg.remove('+3')
-            reorg.remove('+Sg')
-        elif '+1' in reorg and '+Du' in reorg:
-            reorg += ['+Du1']
-            reorg.remove('+1')
-            reorg.remove('+Du')
-        elif '+2' in reorg and '+Du' in reorg:
-            reorg += ['+Du2']
-            reorg.remove('+2')
-            reorg.remove('+Du')
-        elif '+3' in reorg and '+Du' in reorg:
-            reorg += ['+Du3']
-            reorg.remove('+3')
-            reorg.remove('+Du')
-        elif '+1' in reorg and '+Pl' in reorg:
-            reorg += ['+Pl1']
-            reorg.remove('+1')
-            reorg.remove('+Pl')
-        elif '+2' in reorg and '+Pl' in reorg:
-            reorg += ['+Pl2']
-            reorg.remove('+2')
-            reorg.remove('+Pl')
-        elif '+3' in reorg and '+Pl' in reorg:
-            reorg += ['+Pl3']
-            reorg.remove('+3')
-            reorg.remove('+Pl')
-    elif reorg == ['+A']:
+        if "+1" in reorg and "+Sg" in reorg:
+            reorg += ["+Sg1"]
+            reorg.remove("+1")
+            reorg.remove("+Sg")
+        elif "+2" in reorg and "+Sg" in reorg:
+            reorg += ["+Sg2"]
+            reorg.remove("+2")
+            reorg.remove("+Sg")
+        elif "+3" in reorg and "+Sg" in reorg:
+            reorg += ["+Sg3"]
+            reorg.remove("+3")
+            reorg.remove("+Sg")
+        elif "+1" in reorg and "+Du" in reorg:
+            reorg += ["+Du1"]
+            reorg.remove("+1")
+            reorg.remove("+Du")
+        elif "+2" in reorg and "+Du" in reorg:
+            reorg += ["+Du2"]
+            reorg.remove("+2")
+            reorg.remove("+Du")
+        elif "+3" in reorg and "+Du" in reorg:
+            reorg += ["+Du3"]
+            reorg.remove("+3")
+            reorg.remove("+Du")
+        elif "+1" in reorg and "+Pl" in reorg:
+            reorg += ["+Pl1"]
+            reorg.remove("+1")
+            reorg.remove("+Pl")
+        elif "+2" in reorg and "+Pl" in reorg:
+            reorg += ["+Pl2"]
+            reorg.remove("+2")
+            reorg.remove("+Pl")
+        elif "+3" in reorg and "+Pl" in reorg:
+            reorg += ["+Pl3"]
+            reorg.remove("+3")
+            reorg.remove("+Pl")
+    elif reorg == ["+A"]:
         for ape in giellatags:
             if ape not in reorg:
                 reorg += [ape]
     else:
-        print('REORG FAIL', reorg)
+        print("REORG FAIL", reorg)
         sys.exit(1)
     return reorg
 
