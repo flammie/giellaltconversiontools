@@ -707,6 +707,230 @@ UNIMORPH2GIELLA = {
     "LGSPEC1/LGSPEC2": [],  # ?
 }
 
+UPOS2GIELLA = {
+    "NOUN": ["+N"],
+    "VERB": ["+V"],
+    "ADJ": ["+A"],
+    "ADV": ["+Adv"],
+    "ADP": ["+Adp"],
+    "CCONJ": ["+CC"],
+    "SCONJ": ["+CS"],
+    "PUNCT": ["+Punct"],
+    "SYM": ["+Sym"],
+    "PRON": ["+Prn"],
+    "DET": ["+Det"],
+    "NUM": ["+Num"],
+    "INTJ": ["+Interj"],
+    "PROPN": ["+N", "+Prop"],
+    "AUX": ["+V", "+Aux"],
+    "PART": ["+Pcle"],
+    "X": ["+X"],
+}
+
+UFEATS2GIELLA = {
+        "Case=Nom": ["+Nom"],
+        "Case=Gen": ["+Gen"],
+        "Case=Dat": ["+Dat"],
+        "Case=Par": ["+Par"],
+        "Case=Ins": ["+Ins"],
+        "Case=Ill": ["+Ill"],
+        "Case=Abl": ["+Abl"],
+        "Case=Tra": ["+Tra"],
+        "Case=All": ["+All"],
+        "Case=Abe": ["+Abe"],
+        "Case=Ade": ["+Ade"],
+        "Case=Ine": ["+Ine"],
+        "Case=Ela": ["+Ela"],
+        "Case=Loc": ["+Loc"],
+        "Case=Ess": ["+Ess"],
+        "Case=Com": ["+Com"],
+        "Case=Voc": ["+Voc"],
+        "Case=Del": ["+Del"],
+        "Case=Sbl": ["+Sub"],
+        "Case=Sup": ["+Super"],
+        "Case=Cau": ["+Cau"],
+        "Case=Lat": ["+Lat"],
+        "Case=Dis": ["+Dis"],
+        "Case=Abs": ["+Abs"],
+        "Case=Tem": ["+Tem"],
+        "Case=Ter": ["+Ter"],
+        "Case=Acc": ["+Acc"],
+        "Case=Prl": ["+Prl"],
+        "Case=Ben": ["+Ben"],
+        "Case=Cmp": ["+Compa"],
+        "Case=Acc,Nom": ["+Acc", "+Nom"],
+        "Case=Gen,Nom": ["+Gen", "+Nom"],
+        "Gender=Masc": ["+Msc"],
+        "Gender=Fem,Masc": ["+Ut"],
+        "Gender=Fem": ["+Fem"],
+        "Gender=Neut": ["+Neut"],
+        "Gender[psor]=Fem": ["+PxFem"],
+        "Gender[psor]=Masc": ["+PxMasc"],
+        "Animacy=Anim": ["+Sem/Animate"],
+        "Animacy=Inan": ["+Sem/Inanimate"],
+        "Animacy=Hum": ["+Sem/Human"],
+        "Mood=Ind": ["+Ind"],
+        "Mood=Imp": ["+Imp"],
+        "Mood=Cnd": ["+Cond"],
+        "Mood=Pot": ["+Pot"],
+        "Mood=CndSub": ["+CndSubj"],
+        "Mood=Sub": ["+Subj"],
+        "Mood=Opt": ["+Opt"],
+        "Mood=Jus": ["+Jus"],
+        "Mood=Proh": ["+Proh"],
+        "Mood=Prec": ["+Prec"],
+        "Mood=Nec": ["+Nec"],
+        "Mood=Des": ["+Des"],
+        "Mood=Imp,Ind": ["+Imp", "+Ind"],
+        "Mood=Imp,Pot": ["+Imp", "+Pot"],
+        "Mood=Cnd,Pot": ["+Eve"],
+        "Aspect=Compl": [],
+        "Aspect=Frus": [],
+        "Aspect=Freq": ["+Freq"],
+        "Aspect=Aor": ["+Past"],
+        "Aspect=Imp": ["+Imp"],
+        "Aspect=Hab": ["+Hab"],
+        "Aspect=Prog": ["+Prog"],
+        "Aspect=ProgNeg": ["+Prog", "+Neg"],
+        "Aspect=ProgBkg": ["+Prog"],  # XXX
+        "Aspect=ProgLocBkg": ["+Prog"],  # XXX
+        "Aspect=PerfNeg": ["+Perf", "+Neg"],
+        "Aspect=Perf": ["+Perf"],
+        "Aspect=PerfBkg": ["+Perf"],  # XXX
+        "Aspect=Iter": ["+Iter"],
+        "Number=Ptan":
+            ["+Pl"],  # XXX
+        "Number=Plur,Sing":
+            [],  # ???
+        "Number[psor]=Sing":
+            [],  # c.f. Person[psor]
+        "Number[psor]=Dual": [],  # c.f. Person[psor]
+        "Number[psor]=Plur": [],  # c.f. Person[psor]
+        "Number[psed]=Sing": ["+Der/PxSg"],
+        "Number[psed]=Plur": ["+Der/PxPl"],
+        "Number[subj]=Sing": [],  # c.f. Person[subj]
+        "Number[subj]=Plur": [],  # c.f. Person[subj]
+        "Number[subj]=Plur,Sing": [],  # c.f. Person[subj]
+        "Number[obj]=Sing": [],  # c.f. Person[obj]
+        "Number[obj]=Plur": [],  # c.f. Person[obj]
+        "Number[grnd]=Sing": [],  # c.f. Person[grnd]
+        "NumType=Card": ["+Card"],
+        "NumType=Ord": ["+Ord"],
+        "NumType=OrdSets": [],
+        "NumType=OrdMult": [],
+        "NumType=Mult": [],
+        "NumType=Frac": [],
+        "NumType=Dist": [],
+        "NumType=Appr": [],
+        "NumType=Coll": [],
+        "NumType=Sets": [],
+        "AdvType=Cau": [],
+        "AdvType=Con": [],
+        "AdvType=Sta": [],
+        "AdvType=Mod": [],
+        "AdvType=Loc": [],
+        "AdvType=Deg": [],
+        "AdvType=Tim": [],
+        "AdvType=Man": [],
+        "AdvType=Ideoph": [],
+        "Person=4": ["+Impersonal"],  # FIXME
+        "Person=0": ["+Impersonal"],  # FIXME
+        "PronType=Ind,Prs": ["+Indef", "+Pers"],
+        "PronType=Ind": ["+Indef"],
+        "PronType=Prs": ["+Pers"],
+        "PronType=Prs,Tot": ["+Pers"],
+        "PronType=Rel": ["+Rel"],
+        "PronType=Dem": ["+Dem"],
+        "PronType=Dem,Ind": ["+Dem", "+Ind"],
+        "PronType=Int": ["+Interr"],
+        "PronType=Int,Rel": ["+Interr", "+Rel"],
+        "PronType=Rcp": ["+Recipr"],
+        "PronType=Art": ["+Art"],
+        "PronType=Art,Prs": ["+Art", "+Pers"],
+        "PronType=Tot":  [],
+        "PronType=Emp":  [],
+        "PronType=Neg":  ["+Neg"],
+        "AdjType=Attr":  ["+Attr"],
+        "Polarity=Pos": [],
+        "Polarity=Neg":  ["+Neg"],
+        "Tense=Pres": ["+Prs"],
+        "Tense=Past": ["+Prt"],
+        "Tense=Fut": ["+Fut"],
+        "Tense=Pred": ["+Pred"],
+        "Voice=Act": ["+Act"],
+        "Voice=Pass": ["+Pass"],
+        "Voice=Rcp": ["+Rcp"],
+        "Voice=Cau": ["+Cau"],
+        "Voice=Mid": ["+Mid"],
+        "Voice=Mid,Pass": ["+Mid", "+Pass"],
+        "Voice=Stat": ["+Stat"],
+        "Degree=Pos": [],  # ?
+        "Degree=Cmp": ["+Comp"],
+        "Degree=Sup": ["+Sup"],
+        "Degree=Aug": ["+Aug"],
+        "Degree=Dim": ["+Dim"],
+        "VerbType=Aux": ["+Aux"],
+        "VerbType=Cop": ["+Cop"],
+        "PartForm=Pres": ["+PrsPrc"],
+        "PartForm=Past": ["+PrtPrc"],
+        "PartForm=Agt": ["+AgPrc"],
+        "PartForm=Neg": ["+NegPrc"],
+        "PartForm=NegConvPrc": ["+NegConvPrc"],
+        "PartForm=PastDyn": [],
+        "PartForm=PrsDet": [],
+        "PartForm=PrsTra": [],
+        "Definite=Ind": ["+Indef"],
+        "Definite=2": ["+Def2"],
+        "Definite=Def": ["+Def"],
+        "Definite=Spec": ["+Spec"],  # XXX
+        "Definite=Cons": ["+Cons"],  # XXX
+        "Definite=Def,Ind": [],  # ???
+        "Deixis=Prox": ["+Prox"],
+        "Deixis=Remt": ["+Dist"],
+        "Valency=1": ["+IV"],
+        "Valency=2": ["+TV"],
+        "Abbr=Yes": ["+Abbr"],
+        "Poss=Yes": ["+Poss"],
+        "Reflex=Yes": ["+Reflex"],
+        "Connegative=Yes": ["+ConNeg"],
+        "Typo=Yes": ["+Err/Orth"],
+        "Style=Slng": ["+Use/Nonstd"],
+        "Style=Coll": ["+Use/Nonstd"],
+        "Style=Vrnc": ["+Use/Nonstd"],
+        "Style=Rare": ["+Use/Nonstd"],
+        "Style=Expr": ["+Use/Nonstd"],
+        "Style=Arch": ["+Use/Arch"],
+        "Rel=Abs": [],
+        "Rel=NCont": [],
+        "Rel=Cont": [],
+        "NumForm=Word": [],
+        "NumForm=Combi": [],  # XXX
+        "NumForm=Roman": ["+Roman"],
+        "NumForm=Digit": ["+Arab"],
+        "PartType=Prs": ["+PrsPrc"],
+        "PartType=Neg": ["+NegPrc"],
+        "PartType=Emp": ["+Foc"],
+        "PartType=Int": ["+Interr"],
+        "PartType=Mod": [],
+        "PartType=Exs": [],
+        "Foreign=Yes": ["+Lang/Und"],
+        "Variant=Short": ["+Allegro"],
+        "Variant=Long": ["+Adagio"],
+        "Evident=Nfh": [],
+        "Evident=Fh": [],
+        "NounType=Relat": [],
+        "NegationType=Contrastive": [],
+        "PunctType=Elip": [],
+        "PunctSide=Ini": [],
+        "PunctSide=Fin": [],
+        "Red=Yes": [],
+        "Modality=Proh": [],
+        "Modality=Cond": ["+Cond"],
+        "Foc=Yes": ["+Foc"],
+        "Compound=Yes": [],  # XXX #+cmp should go in the middle?
+        "NounBase=Bound": [],
+}
+
 def giella2unimorph(tags):
     unimorphtags = []
     for giella in tags.split("+"):
@@ -1000,42 +1224,8 @@ def unimorph2giella(unimorphs: str) -> list:
 def ud2giella(lemma, upos, xpos, feats):
     """Convert UD to giellalt tags for morphosyntax."""
     giellatags = []
-    if upos == "NOUN":
-        giellatags.append("+N")
-    elif upos == "VERB":
-        giellatags.append("+V")
-    elif upos == "ADJ":
-        giellatags.append("+A")
-    elif upos == "ADV":
-        giellatags.append("+Adv")
-    elif upos == "ADP":
-        giellatags.append("+Adp")
-    elif upos == "CCONJ":
-        giellatags.append("+CC")
-    elif upos == "SCONJ":
-        giellatags.append("+CS")
-    elif upos == "PUNCT":
-        giellatags.append("+Punct")
-    elif upos == "SYM":
-        giellatags.append("+Sym")
-    elif upos == "PRON":
-        giellatags.append("+Prn")
-    elif upos == "DET":
-        giellatags.append("+Det")
-    elif upos == "NUM":
-        giellatags.append("+Num")
-    elif upos == "INTJ":
-        giellatags.append("+Interj")
-    elif upos == "PROPN":
-        giellatags.append("+N")
-        giellatags.append("+Prop")
-    elif upos == "AUX":
-        giellatags.append("+V")
-        giellatags.append("+Aux")
-    elif upos == "PART":
-        giellatags.append("+Pcle")
-    elif upos == "X":
-        giellatags.append("+X")
+    if upos in UPOS2GIELLA:
+        giellatags += UPOS2GIELLA[upos]
     elif upos == "_":
         pass
     else:
@@ -1045,150 +1235,14 @@ def ud2giella(lemma, upos, xpos, feats):
         if featstruct == "_":
             continue
         feat, val = featstruct.split("=")
-        if featstruct == "Case=Nom":
-            giellatags.append("+Nom")
-        elif featstruct == "Case=Gen":
-            giellatags.append("+Gen")
-        elif featstruct == "Case=Dat":
-            giellatags.append("+Dat")
-        elif featstruct == "Case=Par":
-            giellatags.append("+Par")
-        elif featstruct == "Case=Ins":
-            giellatags.append("+Ins")
-        elif featstruct == "Case=Ill":
-            giellatags.append("+Ill")
-        elif featstruct == "Case=Abl":
-            giellatags.append("+Abl")
-        elif featstruct == "Case=Tra":
-            giellatags.append("+Tra")
-        elif featstruct == "Case=All":
-            giellatags.append("+All")
-        elif featstruct == "Case=Abe":
-            giellatags.append("+Abe")
-        elif featstruct == "Case=Ade":
-            giellatags.append("+Ade")
-        elif featstruct == "Case=Ine":
-            giellatags.append("+Ine")
-        elif featstruct == "Case=Ela":
-            giellatags.append("+Ela")
-        elif featstruct == "Case=Loc":
-            giellatags.append("+Loc")
-        elif featstruct == "Case=Ess":
-            giellatags.append("+Ess")
-        elif featstruct == "Case=Com":
-            giellatags.append("+Com")
-        elif featstruct == "Case=Voc":
-            giellatags.append("+Voc")
-        elif featstruct == "Case=Del":
-            giellatags.append("+Del")
-        elif featstruct == "Case=Sbl":
-            giellatags.append("+Sub")
-        elif featstruct == "Case=Sup":
-            giellatags.append("+Super")
-        elif featstruct == "Case=Cau":
-            giellatags.append("+Cau")
-        elif featstruct == "Case=Lat":
-            giellatags.append("+Lat")
-        elif featstruct == "Case=Dis":
-            giellatags.append("+Dis")
-        elif featstruct == "Case=Abs":
-            giellatags.append("+Abs")
-        elif featstruct == "Case=Tem":
-            giellatags.append("+Tem")
-        elif featstruct == "Case=Ter":
-            giellatags.append("+Ter")
-        elif featstruct == "Case=Acc":
-            giellatags.append("+Acc")
-        elif featstruct == "Case=Prl":
-            giellatags.append("+Prl")
-        elif featstruct == "Case=Ben":
-            giellatags.append("+Ben")
-        elif featstruct == "Case=Cmp":
-            giellatags.append("+Compa")
-        elif featstruct == "Case=Acc,Nom":
-            giellatags.append("+AccNom")
-        elif featstruct == "Case=Gen,Nom":
-            giellatags.append("+GenNom")
-        elif featstruct == "Gender=Masc":
-            giellatags.append("+Masc")
-        elif featstruct == "Gender=Fem,Masc":
-            giellatags.append("+Ut")
-        elif featstruct == "Gender=Fem":
-            giellatags.append("+Fem")
-        elif featstruct == "Gender=Neut":
-            giellatags.append("+Neut")
-        elif featstruct == "Gender[psor]=Fem":
-            giellatags.append("+Fem")
-        elif featstruct == "Gender[psor]=Masc":
-            giellatags.append("+Masc")
-        elif featstruct == "Animacy=Anim":
-            giellatags.append("+Sem/Animate")
-        elif featstruct == "Animacy=Inan":
-            giellatags.append("+Sem/Inanimate")
-        elif featstruct == "Animacy=Hum":
-            giellatags.append("+Sem/Hum")
-        elif featstruct == "Mood=Ind":
-            giellatags.append("+Ind")
-        elif featstruct == "Mood=Imp":
-            giellatags.append("+Imp")
-        elif featstruct == "Mood=Cnd":
-            giellatags.append("+Cond")
-        elif featstruct == "Mood=Pot":
-            giellatags.append("+Pot")
-        elif featstruct == "Mood=CndSub":
-            giellatags.append("+CndSubj")
-        elif featstruct == "Mood=Sub":
-            giellatags.append("+Subj")
-        elif featstruct == "Mood=Opt":
-            giellatags.append("+Opt")
-        elif featstruct == "Mood=Jus":
-            giellatags.append("+Jus")
-        elif featstruct == "Mood=Proh":
-            giellatags.append("+Proh")
-        elif featstruct == "Mood=Prec":
-            giellatags.append("+Prec")
-        elif featstruct == "Mood=Nec":
-            giellatags.append("+Nec")
-        elif featstruct == "Mood=Des":
-            giellatags.append("+Des")
-        elif featstruct == "Mood=Imp,Ind":
-            giellatags.append("+Imp")
-            giellatags.append("+Ind")
-        elif featstruct == "Mood=Imp,Pot":
-            giellatags.append("+Imp")
-            giellatags.append("+Pot")
-        elif featstruct == "Mood=Cnd,Pot":
-            giellatags.append("+Eve")
-        elif featstruct == "Aspect=Compl":
-            continue
-        elif featstruct == "Aspect=Frus":
-            continue
-        elif featstruct == "Aspect=Freq":
-            giellatags.append("+Freq")
-        elif featstruct == "Aspect=Aor":
-            giellatags.append("+Past")
-        elif featstruct == "Aspect=Imp":
-            giellatags.append("+Imp")
-        elif featstruct == "Aspect=Hab":
-            giellatags.append("+Hab")
-        elif featstruct == "Aspect=Prog":
-            giellatags.append("+Prog")
-        elif featstruct == "Aspect=ProgNeg":
-            giellatags.append("+Prog")
-            giellatags.append("+Neg")
-        elif featstruct == "Aspect=ProgBkg":
-            giellatags.append("+Prog")  # XXX
-        elif featstruct == "Aspect=ProgLocBkg":
-            giellatags.append("+Prog")  # XXX
-        elif featstruct == "Aspect=PerfNeg":
-            giellatags.append("+Perf")
-            giellatags.append("+Neg")
-        elif featstruct == "Aspect=Perf":
-            giellatags.append("+Perf")
-        elif featstruct == "Aspect=PerfBkg":
-            giellatags.append("+Perf")  # XXX
-        elif featstruct == "Aspect=Iter":
-            giellatags.append("+Iter")
+        if featstruct in UFEATS2GIELLA:
+            giellatags += UFEATS2GIELLA[featstruct]
+        elif featstruct == "AdpType=Prep":
+            giellatags.remove("+Adp")
+            giellatags.insert(0, "+Pr")
+        elif featstruct == "AdpType=Post":
+            giellatags.remove("+Adp")
+            giellatags.insert(0, "+Po")
         elif featstruct == "Number=Sing":
             if "Person=" not in feats:
                 giellatags.append("+Sg")
@@ -1198,70 +1252,6 @@ def ud2giella(lemma, upos, xpos, feats):
         elif featstruct == "Number=Plur":
             if "Person=" not in feats:
                 giellatags.append("+Pl")
-        elif featstruct == "Number=Ptan":
-            giellatags.append("+Pl")  # XXX
-        elif featstruct == "Number=Plur,Sing":
-            continue  # ???
-        elif featstruct == "Number[psor]=Sing":
-            continue  # c.f. Person[psor]
-        elif featstruct == "Number[psor]=Dual":
-            continue  # c.f. Person[psor]
-        elif featstruct == "Number[psor]=Plur":
-            continue  # c.f. Person[psor]
-        elif featstruct == "Number[psed]=Sing":
-            giellatags.append("+Der/PxSg")
-        elif featstruct == "Number[psed]=Plur":
-            giellatags.append("+Der/PxPl")
-        elif featstruct == "Number[subj]=Sing":
-            continue  # c.f. Person[subj]
-        elif featstruct == "Number[subj]=Plur":
-            continue  # c.f. Person[subj]
-        elif featstruct == "Number[subj]=Plur,Sing":
-            continue  # c.f. Person[subj]
-        elif featstruct == "Number[obj]=Sing":
-            continue  # c.f. Person[obj]
-        elif featstruct == "Number[obj]=Plur":
-            continue  # c.f. Person[obj]
-        elif featstruct == "Number[grnd]=Sing":
-            continue  # c.f. Person[grnd]
-        elif featstruct == "NumType=Card":
-            giellatags.append("+Card")
-        elif featstruct == "NumType=Ord":
-            giellatags.append("+Ord")
-        elif featstruct == "NumType=OrdSets":
-            continue
-        elif featstruct == "NumType=OrdMult":
-            continue
-        elif featstruct == "NumType=Mult":
-            continue
-        elif featstruct == "NumType=Frac":
-            continue
-        elif featstruct == "NumType=Dist":
-            continue
-        elif featstruct == "NumType=Appr":
-            continue
-        elif featstruct == "NumType=Coll":
-            continue
-        elif featstruct == "NumType=Sets":
-            continue
-        elif featstruct == "AdvType=Cau":
-            continue
-        elif featstruct == "AdvType=Con":
-            continue
-        elif featstruct == "AdvType=Sta":
-            continue
-        elif featstruct == "AdvType=Mod":
-            continue
-        elif featstruct == "AdvType=Loc":
-            continue
-        elif featstruct == "AdvType=Deg":
-            continue
-        elif featstruct == "AdvType=Tim":
-            continue
-        elif featstruct == "AdvType=Man":
-            continue
-        elif featstruct == "AdvType=Ideoph":
-            continue
         elif featstruct == "Person=1":
             if "Number=Sing" in feats:
                 giellatags.append("+Sg1")
@@ -1289,10 +1279,6 @@ def ud2giella(lemma, upos, xpos, feats):
                 giellatags.append("+Du3")
             else:
                 giellatags.append("+3")
-        elif featstruct == "Person=4":
-            giellatags.append("+Impersonal")  # FIXME
-        elif featstruct == "Person=0":
-            giellatags.append("+Impersonal")  # FIXME
         elif featstruct == "Person[psor]=1":
             if "Number[psor]=Sing" in feats:
                 giellatags.append("+PxSg1")
@@ -1357,199 +1343,6 @@ def ud2giella(lemma, upos, xpos, feats):
                 giellatags.append("+g_Sg3")
             elif "Number[grnd]=Plur" in feats:
                 giellatags.append("+g_Pl3")
-        elif featstruct == "PronType=Ind,Prs":
-            giellatags.append("+Indef")
-            giellatags.append("+Pers")
-        elif featstruct == "PronType=Ind":
-            giellatags.append("+Indef")
-        elif featstruct == "PronType=Prs":
-            giellatags.append("+Pers")
-        elif featstruct == "PronType=Prs,Tot":
-            giellatags.append("+Pers")
-        elif featstruct == "PronType=Rel":
-            giellatags.append("+Rel")
-        elif featstruct == "PronType=Dem":
-            giellatags.append("+Dem")
-        elif featstruct == "PronType=Dem,Ind":
-            giellatags.append("+Dem")
-            giellatags.append("+Ind")
-        elif featstruct == "PronType=Int":
-            giellatags.append("+Interr")
-        elif featstruct == "PronType=Int,Rel":
-            giellatags.append("+Interr")
-            giellatags.append("+Rel")
-        elif featstruct == "PronType=Rcp":
-            giellatags.append("+Recipr")
-        elif featstruct == "PronType=Art":
-            giellatags.append("+Art")
-        elif featstruct == "PronType=Art,Prs":
-            giellatags.append("+Art")
-            giellatags.append("+Pers")
-        elif featstruct == "PronType=Tot":
-            continue
-        elif featstruct == "PronType=Emp":
-            continue
-        elif featstruct == "PronType=Neg":
-            giellatags.append("+Neg")
-        elif featstruct == "AdpType=Prep":
-            giellatags.remove("+Adp")
-            giellatags.insert(0, "+Pr")
-        elif featstruct == "AdpType=Post":
-            giellatags.remove("+Adp")
-            giellatags.insert(0, "+Po")
-        elif featstruct == "Polarity=Pos":
-            continue
-        elif featstruct == "Polarity=Neg":
-            giellatags.append("+Neg")
-        elif featstruct == "Tense=Pres":
-            giellatags.append("+Prs")
-        elif featstruct == "Tense=Past":
-            giellatags.append("+Prt")
-        elif featstruct == "Tense=Fut":
-            giellatags.append("+Fut")
-        elif featstruct == "Tense=Pred":
-            giellatags.append("+Pred")
-        elif featstruct == "Voice=Act":
-            giellatags.append("+Act")
-        elif featstruct == "Voice=Pass":
-            giellatags.append("+Pass")
-        elif featstruct == "Voice=Rcp":
-            giellatags.append("+Rcp")
-        elif featstruct == "Voice=Cau":
-            giellatags.append("+Cau")
-        elif featstruct == "Voice=Mid":
-            giellatags.append("+Mid")
-        elif featstruct == "Voice=Mid,Pass":
-            giellatags.append("+Mid")
-            giellatags.append("+Pass")
-        elif featstruct == "Voice=Stat":
-            giellatags.append("+Stat")
-        elif featstruct == "Degree=Pos":
-            continue  # ?
-        elif featstruct == "Degree=Cmp":
-            giellatags.append("+Comp")
-        elif featstruct == "Degree=Sup":
-            giellatags.append("+Sup")
-        elif featstruct == "Degree=Aug":
-            giellatags.append("+Aug")
-        elif featstruct == "Degree=Dim":
-            giellatags.append("+Dim")
-        elif featstruct == "VerbType=Aux":
-            giellatags.append("+Aux")
-        elif featstruct == "PartForm=Pres":
-            giellatags.append("+PrsPrc")
-        elif featstruct == "PartForm=Past":
-            giellatags.append("+PrtPrc")
-        elif featstruct == "PartForm=Agt":
-            giellatags.append("+AgPrc")
-        elif featstruct == "PartForm=Neg":
-            giellatags.append("+NegPrc")
-        elif featstruct == "PartForm=NegConvPrc":
-            giellatags.append("+NegConvPrc")
-        elif featstruct == "PartForm=PastDyn":
-            continue
-        elif featstruct == "PartForm=PrsDet":
-            continue
-        elif featstruct == "PartForm=PrsTra":
-            continue
-        elif featstruct == "Definite=Ind":
-            giellatags.append("+Indef")
-        elif featstruct == "Definite=2":
-            giellatags.append("+Def2")
-        elif featstruct == "Definite=Def":
-            giellatags.append("+Def")
-        elif featstruct == "Definite=Spec":
-            giellatags.append("+Spec")  # XXX
-        elif featstruct == "Definite=Cons":
-            giellatags.append("+Cons")  # XXX
-        elif featstruct == "Definite=Def,Ind":
-            continue  # ???
-        elif featstruct == "Deixis=Prox":
-            giellatags.append("+Prox")
-        elif featstruct == "Deixis=Remt":
-            giellatags.append("+Dist")
-        elif featstruct == "Valency=1":
-            giellatags.append("+IV")
-        elif featstruct == "Valency=2":
-            giellatags.append("+TV")
-        elif featstruct == "Abbr=Yes":
-            giellatags.append("+Abbr")
-        elif featstruct == "Poss=Yes":
-            giellatags.append("+Poss")
-        elif featstruct == "Reflex=Yes":
-            giellatags.append("+Reflex")
-        elif featstruct == "Connegative=Yes":
-            giellatags.append("+ConNeg")
-        elif featstruct == "Typo=Yes":
-            giellatags.append("+Err/Orth")
-        elif featstruct == "Style=Slng":
-            giellatags.append("+Use/Nonstd")
-        elif featstruct == "Style=Coll":
-            giellatags.append("+Use/Nonstd")
-        elif featstruct == "Style=Vrnc":
-            giellatags.append("+Use/Nonstd")
-        elif featstruct == "Style=Rare":
-            giellatags.append("+Use/Nonstd")
-        elif featstruct == "Style=Expr":
-            giellatags.append("+Use/Nonstd")
-        elif featstruct == "Style=Arch":
-            giellatags.append("+Use/Arch")
-        elif featstruct == "Rel=Abs":
-            continue
-        elif featstruct == "Rel=NCont":
-            continue
-        elif featstruct == "Rel=Cont":
-            continue
-        elif featstruct == "NumForm=Word":
-            continue
-        elif featstruct == "NumForm=Combi":
-            continue  # XXX
-        elif featstruct == "NumForm=Roman":
-            giellatags.append("+Roman")
-        elif featstruct == "NumForm=Digit":
-            giellatags.append("+Arab")
-        elif featstruct == "PartType=Prs":
-            giellatags.append("+PrsPrc")
-        elif featstruct == "PartType=Neg":
-            giellatags.append("+NegPrc")
-        elif featstruct == "PartType=Emp":
-            giellatags.append("+Foc")
-        elif featstruct == "PartType=Int":
-            giellatags.append("+Interr")
-        elif featstruct == "PartType=Mod":
-            continue
-        elif featstruct == "PartType=Exs":
-            continue
-        elif featstruct == "Foreign=Yes":
-            giellatags.append("+Lang/Und")
-        elif featstruct == "Variant=Short":
-            giellatags.append("+Allegro")
-        elif featstruct == "Variant=Long":
-            giellatags.append("+Adagio")
-        elif featstruct == "Evident=Nfh":
-            continue
-        elif featstruct == "Evident=Fh":
-            continue
-        elif featstruct == "NounType=Relat":
-            continue
-        elif featstruct == "NegationType=Contrastive":
-            continue
-        elif featstruct == "PunctType=Elip":
-            continue
-        elif featstruct == "PunctSide=Ini":
-            continue
-        elif featstruct == "PunctSide=Fin":
-            continue
-        elif featstruct == "Red=Yes":
-            continue
-        elif featstruct == "Modality=Proh":
-            continue
-        elif featstruct == "Modality=Cond":
-            giellatags.append("+Cond")
-        elif featstruct == "Foc=Yes":
-            giellatags.append("+Foc")
-        elif featstruct == "Compound=Yes":
-            continue  # XXX #+cmp should go in the middle?
         # hacks that use feat and val separately
         elif feat == "InfForm":
             giellatags.append("+Inf" + val)
