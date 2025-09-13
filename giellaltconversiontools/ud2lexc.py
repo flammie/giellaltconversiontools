@@ -14,14 +14,16 @@ def main():
     ap.add_argument("-i", "--input", metavar="INFILE", type=open,
                     dest="infile", help="read CONLL-U data from INFILE")
     ap.add_argument("-L", "--lexc", metavar="LEXCFILE", type=FileType("w"),
-                    dest="lexcfile", help="write lexc to LEXCFILE",
-                    required=True)
+                    dest="lexcfile", help="write lexc to LEXCFILE")
     ap.add_argument("-v", "--verbose", action="store_true", default=False,
                     help="print verbosely while processing")
     opts = ap.parse_args()
+    if not opts.lexcfile:
+        opts.lexcfile = sys.stdout
+        print("Writing to <stdout>", file=sys.stderr)
     if not opts.infile:
         opts.infile = sys.stdin
-        print("reading from <stdin>")
+        print("reading from <stdin>", file=sys.stderr)
     print_lexc_preamble(opts.lexcfile)
     for line in opts.infile:
         if line.startswith("#"):
