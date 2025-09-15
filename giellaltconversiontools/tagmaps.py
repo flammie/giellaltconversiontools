@@ -757,15 +757,19 @@ UFEATS2GIELLA = {
         "Case=Acc": ["+Acc"],
         "Case=Prl": ["+Prl"],
         "Case=Ben": ["+Ben"],
-        "Case=Cmp": ["+Compa"],
+        "Case=Mal": ["+Mal"],
+        "Case=Cmp": ["+Compv"],
         "Case=Acc,Nom": ["+Acc", "+Nom"],
         "Case=Gen,Nom": ["+Gen", "+Nom"],
         "Gender=Masc": ["+Msc"],
-        "Gender=Fem,Masc": ["+Ut"],
+        "Gender=Fem,Masc": ["+Common"],
+        "Gender=Masc,Neut": ["+Ut"],
         "Gender=Fem": ["+Fem"],
         "Gender=Neut": ["+Neut"],
         "Gender[psor]=Fem": ["+PxFem"],
         "Gender[psor]=Masc": ["+PxMasc"],
+        "Gender[abs]=Neut": [],  # ?
+        "Gender[obj]=Masc": [],
         "Animacy=Anim": ["+Sem/Animate"],
         "Animacy=Inan": ["+Sem/Inanimate"],
         "Animacy=Hum": ["+Sem/Human"],
@@ -798,12 +802,9 @@ UFEATS2GIELLA = {
         "Aspect=Perf": ["+Perf"],
         "Aspect=PerfBkg": ["+Perf"],  # XXX
         "Aspect=Iter": ["+Iter"],
-        "Number=Ptan":
-            ["+Pl"],  # XXX
-        "Number=Plur,Sing":
-            [],  # ???
-        "Number[psor]=Sing":
-            [],  # c.f. Person[psor]
+        "Number=Ptan": ["+Pl"],  # XXX
+        "Number=Plur,Sing": [],  # ???
+        "Number[psor]=Sing": [],  # c.f. Person[psor]
         "Number[psor]=Dual": [],  # c.f. Person[psor]
         "Number[psor]=Plur": [],  # c.f. Person[psor]
         "Number[psed]=Sing": ["+Der/PxSg"],
@@ -855,6 +856,7 @@ UFEATS2GIELLA = {
         "Polarity=Neg":  ["+Neg"],
         "Tense=Pres": ["+Prs"],
         "Tense=Past": ["+Prt"],
+        "Tense=Pqp": ["+Pqp"],
         "Tense=Fut": ["+Fut"],
         "Tense=Pred": ["+Pred"],
         "Voice=Act": ["+Act"],
@@ -864,6 +866,7 @@ UFEATS2GIELLA = {
         "Voice=Mid": ["+Mid"],
         "Voice=Mid,Pass": ["+Mid", "+Pass"],
         "Voice=Stat": ["+Stat"],
+        "Voice=Trans": ["+Trans"],
         "Degree=Pos": [],  # ?
         "Degree=Cmp": ["+Comp"],
         "Degree=Sup": ["+Sup"],
@@ -884,6 +887,7 @@ UFEATS2GIELLA = {
         "Definite=Def": ["+Def"],
         "Definite=Spec": ["+Spec"],  # XXX
         "Definite=Cons": ["+Cons"],  # XXX
+        "Definite=Com": ["+Com"],  # XXX
         "Definite=Def,Ind": [],  # ???
         "Deixis=Prox": ["+Prox"],
         "Deixis=Remt": ["+Dist"],
@@ -913,12 +917,14 @@ UFEATS2GIELLA = {
         "PartType=Int": ["+Interr"],
         "PartType=Mod": [],
         "PartType=Exs": [],
+        "PartType=Inf": ["+Inf"],  # doesnt make sense
         "Foreign=Yes": ["+Lang/Und"],
         "Variant=Short": ["+Allegro"],
         "Variant=Long": ["+Adagio"],
         "Evident=Nfh": [],
         "Evident=Fh": [],
         "NounType=Relat": [],
+        "NounType=Het": [],
         "NegationType=Contrastive": [],
         "PunctType=Elip": [],
         "PunctSide=Ini": [],
@@ -929,6 +935,10 @@ UFEATS2GIELLA = {
         "Foc=Yes": ["+Foc"],
         "Compound=Yes": [],  # XXX #+cmp should go in the middle?
         "NounBase=Bound": [],
+        "NounBase=Free": [],
+        "Subcat=Tran": ["+TV"],
+        "Subcat=Intr": ["+IV"],
+        "TV=Yes": ["+TV"],
 }
 
 def giella2unimorph(tags):
@@ -1348,6 +1358,10 @@ def ud2giella(lemma, upos, xpos, feats):
             giellatags.append("+Inf" + val)
         elif feat == "Clitic":
             giellatags.append("+Foc/" + val)
+        elif feat == "HebBinyan":
+            continue
+        elif feat == "NumValue":
+            continue  # ?
         elif feat == "NameType":
             continue  # ?
         elif feat == "VerbForm":
