@@ -274,6 +274,12 @@ def get_ufeats(tags: list, lemma: str = "", surf: str = ""):
         elif tag == "Sg3":
             feats.append("Number=Sing")
             feats.append("Person=3")
+        elif tag == "Subqst":
+            continue  # FIXME what is this?
+        elif tag == "Logo":
+            continue  # FIXME what is this?
+        elif tag == "ImprtII":
+            continue  # FIXME what is this?
         elif tag == "Allegro":
             continue
         elif tag == "NomAg":
