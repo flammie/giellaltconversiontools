@@ -764,15 +764,18 @@ UFEATS2GIELLA = {
         "Gender=Masc": ["+Msc"],
         "Gender=Fem,Masc": ["+Common"],
         "Gender=Masc,Neut": ["+Ut"],
+        "Gender=Fem,Neut": ["+Ut"],
         "Gender=Fem": ["+Fem"],
         "Gender=Neut": ["+Neut"],
         "Gender[psor]=Fem": ["+PxFem"],
         "Gender[psor]=Masc": ["+PxMasc"],
+        "Gender[psor]=Masc,Neut": ["+PxMascNeut"],
         "Gender[abs]=Neut": [],  # ?
         "Gender[obj]=Masc": [],
         "Animacy=Anim": ["+Sem/Animate"],
         "Animacy=Inan": ["+Sem/Inanimate"],
         "Animacy=Hum": ["+Sem/Human"],
+        "Animacy=Nhum": ["+Sem/-Human"],
         "Mood=Ind": ["+Ind"],
         "Mood=Imp": ["+Imp"],
         "Mood=Cnd": ["+Cond"],
@@ -790,6 +793,7 @@ UFEATS2GIELLA = {
         "Mood=Cnd,Pot": ["+Eve"],
         "Aspect=Compl": [],
         "Aspect=Frus": [],
+        "Aspect=Prosp": [],
         "Aspect=Freq": ["+Freq"],
         "Aspect=Aor": ["+Past"],
         "Aspect=Imp": ["+Imp"],
@@ -803,6 +807,8 @@ UFEATS2GIELLA = {
         "Aspect=PerfBkg": ["+Perf"],  # XXX
         "Aspect=Iter": ["+Iter"],
         "Number=Ptan": ["+Pl"],  # XXX
+        "Number=Coll": ["+Pl"],  # XXX
+        "Number=Count": [],  # XXX
         "Number=Plur,Sing": [],  # ???
         "Number[psor]=Sing": [],  # c.f. Person[psor]
         "Number[psor]=Dual": [],  # c.f. Person[psor]
@@ -815,6 +821,8 @@ UFEATS2GIELLA = {
         "Number[obj]=Sing": [],  # c.f. Person[obj]
         "Number[obj]=Plur": [],  # c.f. Person[obj]
         "Number[grnd]=Sing": [],  # c.f. Person[grnd]
+        "Number[abs]=Sing": [],  # c.f. Person[grnd]
+        "Number[abs]=Plur": [],  # c.f. Person[grnd]
         "NumType=Card": ["+Card"],
         "NumType=Ord": ["+Ord"],
         "NumType=OrdSets": [],
@@ -825,6 +833,8 @@ UFEATS2GIELLA = {
         "NumType=Appr": [],
         "NumType=Coll": [],
         "NumType=Sets": [],
+        "AdpType=Voc": [],  # rest AdpType is handled in code
+        "AdpType=Comprep": [],  # rest AdpType is handled in code
         "AdvType=Cau": [],
         "AdvType=Con": [],
         "AdvType=Sta": [],
@@ -850,12 +860,16 @@ UFEATS2GIELLA = {
         "PronType=Art,Prs": ["+Art", "+Pers"],
         "PronType=Tot":  [],
         "PronType=Emp":  [],
+        "PronType=Exc":  [],
         "PronType=Neg":  ["+Neg"],
         "AdjType=Attr":  ["+Attr"],
+        "AdjType=Pred":  ["+Pred"],
+        "ConjType=Oper":  [],
         "Polarity=Pos": [],
         "Polarity=Neg":  ["+Neg"],
         "Tense=Pres": ["+Prs"],
         "Tense=Past": ["+Prt"],
+        "Tense=Imp": ["+Prt"],
         "Tense=Pqp": ["+Pqp"],
         "Tense=Fut": ["+Fut"],
         "Tense=Pred": ["+Pred"],
@@ -867,6 +881,7 @@ UFEATS2GIELLA = {
         "Voice=Mid,Pass": ["+Mid", "+Pass"],
         "Voice=Stat": ["+Stat"],
         "Voice=Trans": ["+Trans"],
+        "Degree=Equ": [],  # ?
         "Degree=Pos": [],  # ?
         "Degree=Cmp": ["+Comp"],
         "Degree=Sup": ["+Sup"],
@@ -874,6 +889,8 @@ UFEATS2GIELLA = {
         "Degree=Dim": ["+Dim"],
         "VerbType=Aux": ["+Aux"],
         "VerbType=Cop": ["+Cop"],
+        "VerbType=Mod": [],
+        "VerbType=Pas": [],
         "PartForm=Pres": ["+PrsPrc"],
         "PartForm=Past": ["+PrtPrc"],
         "PartForm=Agt": ["+AgPrc"],
@@ -891,6 +908,7 @@ UFEATS2GIELLA = {
         "Definite=Def,Ind": [],  # ???
         "Deixis=Prox": ["+Prox"],
         "Deixis=Remt": ["+Dist"],
+        "Deixis[psor]=Prox": [],  # XXX
         "Valency=1": ["+IV"],
         "Valency=2": ["+TV"],
         "Abbr=Yes": ["+Abbr"],
@@ -925,8 +943,12 @@ UFEATS2GIELLA = {
         "Evident=Fh": [],
         "NounType=Relat": [],
         "NounType=Het": [],
+        "NounType=Clf": [],
         "NegationType=Contrastive": [],
         "PunctType=Elip": [],
+        "PunctType=Peri": [],
+        "PunctType=Comm": [],
+        "PunctType=Brck": [],
         "PunctSide=Ini": [],
         "PunctSide=Fin": [],
         "Red=Yes": [],
@@ -934,11 +956,16 @@ UFEATS2GIELLA = {
         "Modality=Cond": ["+Cond"],
         "Foc=Yes": ["+Foc"],
         "Compound=Yes": [],  # XXX #+cmp should go in the middle?
+        "NounBase=Suffixal": [],
         "NounBase=Bound": [],
         "NounBase=Free": [],
         "Subcat=Tran": ["+TV"],
         "Subcat=Intr": ["+IV"],
         "TV=Yes": ["+TV"],
+        "Tv=Yes": ["+TV"],
+        "Hyph=Yes": ["+Cmp/Hyph"],  # mayge?
+        "PrepCase=Pre": [],  # ?
+        "PrepCase=Npr": [],  # ?
 }
 
 def giella2unimorph(tags):
@@ -1247,12 +1274,21 @@ def ud2giella(lemma, upos, xpos, feats):
         feat, val = featstruct.split("=")
         if featstruct in UFEATS2GIELLA:
             giellatags += UFEATS2GIELLA[featstruct]
+        # things that overwrite things
         elif featstruct == "AdpType=Prep":
-            giellatags.remove("+Adp")
+            if "+Adp" in giellatags:
+                giellatags.remove("+Adp")
             giellatags.insert(0, "+Pr")
         elif featstruct == "AdpType=Post":
-            giellatags.remove("+Adp")
+            if "+Adp" in giellatags:
+                giellatags.remove("+Adp")
             giellatags.insert(0, "+Po")
+        elif featstruct == "AdpType=Ambi":
+            if "+Adp" in giellatags:
+                giellatags.remove("+Adp")
+            giellatags.insert(0, "+Po")
+            giellatags.insert(0, "+Pr")
+        # things that may depend on things
         elif featstruct == "Number=Sing":
             if "Person=" not in feats:
                 giellatags.append("+Sg")
@@ -1262,6 +1298,7 @@ def ud2giella(lemma, upos, xpos, feats):
         elif featstruct == "Number=Plur":
             if "Person=" not in feats:
                 giellatags.append("+Pl")
+        # things that depend on things like always
         elif featstruct == "Person=1":
             if "Number=Sing" in feats:
                 giellatags.append("+Sg1")
@@ -1348,6 +1385,21 @@ def ud2giella(lemma, upos, xpos, feats):
                 giellatags.append("+o_Sg3")
             elif "Number[obj]=Plur" in feats:
                 giellatags.append("+o_Pl3")
+        elif featstruct == "Person[abs]=1":
+            if "Number[abs]=Sing" in feats:
+                giellatags.append("+a_Sg1")
+            elif "Number[abs]=Plur" in feats:
+                giellatags.append("+a_Pl1")
+        elif featstruct == "Person[abs]=2":
+            if "Number[abs]=Sing" in feats:
+                giellatags.append("+a_Sg2")
+            elif "Number[abs]=Plur" in feats:
+                giellatags.append("+a_Pl2")
+        elif featstruct == "Person[obj]=3":
+            if "Number[abs]=Sing" in feats:
+                giellatags.append("+a_Sg3")
+            elif "Number[abs]=Plur" in feats:
+                giellatags.append("+a_Pl3")
         elif featstruct == "Person[grnd]=3":
             if "Number[grnd]=Sing" in feats:
                 giellatags.append("+g_Sg3")
@@ -1358,6 +1410,13 @@ def ud2giella(lemma, upos, xpos, feats):
             giellatags.append("+Inf" + val)
         elif feat == "Clitic":
             giellatags.append("+Foc/" + val)
+        # skippable feats (not relevant)
+        elif feat == "Polite":
+            continue
+        elif feat == "InflClass":
+            continue
+        elif feat == "VerbClass":
+            continue
         elif feat == "HebBinyan":
             continue
         elif feat == "NumValue":
@@ -1371,7 +1430,7 @@ def ud2giella(lemma, upos, xpos, feats):
         elif feat == "Derivation":
             giellatags.append("+Drv/" + val)
         else:
-            print(f"Unhandled UFeat {featstruct}")
+            print(f"Unhandled UFeat {featstruct} in {feats}")
             sys.exit(1)
     return giellatags
 
