@@ -137,6 +137,23 @@ UPOS2GIELLA = {
     "X": ["+X"],
 }
 
+GIELLA2UPOS = {
+    "A": "ADJ",
+    "Adv": "ADV",
+    "CC": "CCONJ",
+    "CS": "SCONJ",
+    "Pron": "PRON",
+    "Pr": "ADP",
+    "Po": "ADP",
+    "Num": "NUM",
+    "CLB": "PUNCT",
+    "Pcle": "PART",
+    "PUNCT": "PUNCT",
+    "Interj": "INTJ",
+    "URL": "PROPN",  # c.f. standard docu
+    "?": "X",
+}
+
 UFEATS2GIELLA = {
         "Case=Nom": ["+Nom"],
         "Case=Gen": ["+Gen"],
@@ -378,6 +395,106 @@ UFEATS2GIELLA = {
         "PrepCase=Npr": [],  # ?
 }
 
+GIELLA2UFEATS = {
+        "N": [],
+        "V": [],
+        "A": [],
+        "CC": [],
+        "CS": [],
+        "Adv": [],
+        "Pron": [],
+        "Prop": [],
+        "Punct": [],
+        "<aux>": [],
+        "CLB": [],
+        "Symbol": [],
+        "?": [],
+        "Num": [],
+        "PUNCT": [],
+        "Po": [],
+        "Pr": [],
+        "Pcle": [],
+        "Interj": [],
+        "CLBfinal": [],
+        "URL": [],
+         "Imprt":  ["Mood=Imp"],
+         "Cond": ["Mood=Cond"],
+         "Pot": ["Mood=Pot"],
+         "Ind": ["Mood=Ind"],
+         "Opt": ["Mood=Opt"],
+         "Prs": ["Tense=Pres"],
+         "Prt": ["Tense=Past"],
+         "Sg": ["Number=Sing"],
+         "Pl": ["Number=Plur"],
+         "Du": ["Number=Dual"],
+         "Nom": ["Case=Nom"],
+         "Gen": ["Case=Gen"],
+         "Ela": ["Case=Ela"],
+         "Ine": ["Case=Ine"],
+         "Loc": ["Case=Loc"],
+         "Ess": ["Case=Ess"],
+         "Ill": ["Case=Ill"],
+         "Acc": ["Case=Acc"],
+         "Par": ["Case=Par"],
+         "Abe": ["Case=Abe"],
+         "Com": ["Case=Com"],
+         "Sg1": ["Number=Sing", "Person=1"],
+         "Sg2": ["Number=Sing", "Person=2"],
+         "Sg3": ["Number=Sing", "Person=3"],
+         "Du2": ["Number=Dual", "Person=2"],
+         "Du3": ["Number=Dual", "Person=3"],
+         "Pl1": ["Number=Plur", "Person=1"],
+         "Pl2": ["Number=Plur", "Person=2"],
+         "Pl3": ["Number=Plur", "Person=3"],
+         "PxSg1": ["Number[psor]=Sing", "Person[psor]=1"],
+         "PxSg2": ["Number[psor]=Sing", "Person[psor]=2"],
+         "PxSg3": ["Number[psor]=Sing", "Person[psor]=3"],
+         "PxDu1": ["Number[psor]=Dual", "Person[psor]=1"],
+         "PxDu2": ["Number[psor]=Dual", "Person[psor]=2"],
+         "PxDu3": ["Number[psor]=Dual", "Person[psor]=3"],
+         "PxPl1": ["Number[psor]=Plur", "Person[psor]=1"],
+         "PxPl2": ["Number[psor]=Plur", "Person[psor]=2"],
+         "PxPl3": ["Number[psor]=Plur", "Person[psor]=3"],
+         "PrsPrc": ["VerbForm=Part", "Tense=Pres"],
+         "PrfPrc": ["VerbForm=Part", "Tense=Past"],
+         "Indef": ["PronType=Ind"],
+         "Recipr": ["PronType=Rec"],
+         "Dem": ["PronType=Dem"],
+         "Interr": ["PronType=Int"],
+         "Rel": ["PronType=Rel"],
+         "Pers": ["PronType=Pers"],
+         "Refl": ["Reflex=Yes"],
+         "Ord": ["NumType=Ord"],
+         "Coll": ["NumType=Sets"],
+         "Neg": ["Polarity=Neg"],
+         "ConNeg": ["Connegative=Yes"],
+         "ABBR": ["Abbr=Yes"],
+         "ACR": ["Abbr=Yes"],
+         "Err/Orth": ["Typo=Yes"],
+         "Err/MissingSpace": ["Typo=Yes"],
+         "Err/Lex": [],
+         "Qst": [],  # XXX: this should be something
+         "Inf": ["VerbForm=Inf"],
+         "Actio": ["VerbForm=Inf?"],
+         "VAbess": ["VerbForm=Inf?", "Case=Abe"],
+         "VGen": ["VerbForm=Inf?", "Case=Gen"],
+         "Ger": ["VerbForm=Ger"],
+         "Sup": ["VerbForm=Sup"],
+         "TV": [],
+         "IV": [],
+         "Rom": [],
+         "Arab": [],
+         "Attr": [],  # XXX: check if should be upd in ud standards?
+         "Subqst": [],  # FIXME what is this?
+         "Logo": [],  # FIXME what is this?
+         "ImprtII": [],  # FIXME what is this?
+         "Allegro": [],
+         "NomAg": [],  # XXX?
+         "Known": [],  # ???
+
+
+}
+
 
 def ud2giella(lemma, upos, xpos, feats):
     """Convert UD to giellalt tags for morphosyntax."""
@@ -570,37 +687,11 @@ def get_upos(tags: list, lemma: str = "", surf: str = ""):
             return "AUX"
         else:
             return "VERB"
-    elif "A" in tags:
-        return "ADJ"
-    elif "Adv" in tags:
-        return "ADV"
-    elif "CC" in tags:
-        return "CCONJ"
-    elif "CS" in tags:
-        return "SCONJ"
-    elif "Pron" in tags:
-        return "PRON"
-    elif "Pr" in tags:
-        return "ADP"
-    elif "Po" in tags:
-        return "ADP"
-    elif "Num" in tags:
-        return "NUM"
-    elif "CLB" in tags:
-        return "PUNCT"
-    elif "Pcle" in tags:
-        return "PART"
-    elif "PUNCT" in tags:
-        return "PUNCT"
-    elif "Interj" in tags:
-        return "INTJ"
-    elif "URL" in tags:
-        return "PROPN"  # c.f. standard docu
-    elif "?" in tags:
-        return "X"
-    else:
-        print(f"cannot find upos from {surf} → {lemma} {tags}")
-        return "X"
+    for g in GIELLA2UPOS:
+        if g in tags:
+            return GIELLA2UPOS[g]
+    print(f"cannot find upos from {surf} → {lemma} {tags}")
+    return "X"
 
 
 def get_xpos(tags: list, lemma: str = "", surf: str = ""):
@@ -618,179 +709,19 @@ def get_xpos(tags: list, lemma: str = "", surf: str = ""):
         else:
             rv.append(tag)
     if len(rv) > 2:
-        return " ".join(rv[:2])
+        return "+" + "+".join(rv[:2])
     else:
-        return " ".join(rv)
+        return "+" + "+".join(rv)
 
 
 def get_ufeats(tags: list, lemma: str = "", surf: str = ""):
     """Convert giella tags into universal feature structures."""
     feats = []
     for tag in tags:
-        if tag in ["N", "V", "A", "CC", "CS", "Adv", "Pron", "Prop", "Punct",
-                   "<aux>", "CLB", "Symbol", "?", "Num", "PUNCT", "Po", "Pr",
-                   "Pcle", "Interj", "CLBfinal", "URL"]:
-            continue
-        elif tag == "Imprt":
-            feats.append("Mood=Imp")
-        elif tag == "Cond":
-            feats.append("Mood=Cond")
-        elif tag == "Pot":
-            feats.append("Mood=Pot")
-        elif tag == "Ind":
-            feats.append("Mood=Ind")
-        elif tag == "Opt":
-            feats.append("Mood=Opt")
-        elif tag == "Prs":
-            feats.append("Tense=Pres")
-        elif tag == "Prt":
-            feats.append("Tense=Past")
-        elif tag == "Sg":
-            feats.append("Number=Sing")
-        elif tag == "Pl":
-            feats.append("Number=Plur")
-        elif tag == "Du":
-            feats.append("Number=Dual")
-        elif tag == "Nom":
-            feats.append("Case=Nom")
-        elif tag == "Gen":
-            feats.append("Case=Gen")
-        elif tag == "Ela":
-            feats.append("Case=Ela")
-        elif tag == "Ine":
-            feats.append("Case=Ine")
-        elif tag == "Loc":
-            feats.append("Case=Loc")
-        elif tag == "Ess":
-            feats.append("Case=Ess")
-        elif tag == "Ill":
-            feats.append("Case=Ill")
-        elif tag == "Acc":
-            feats.append("Case=Acc")
-        elif tag == "Par":
-            feats.append("Case=Par")
-        elif tag == "Abe":
-            feats.append("Case=Abe")
-        elif tag == "Com":
-            feats.append("Case=Com")
-        elif tag == "Sg1":
-            feats.append("Number=Sing")
-            feats.append("Person=1")
-        elif tag == "Sg2":
-            feats.append("Number=Sing")
-            feats.append("Person=2")
-        elif tag == "Sg3":
-            feats.append("Number=Sing")
-            feats.append("Person=3")
-        elif tag == "Du1":
-            feats.append("Number=Dual")
-            feats.append("Person=1")
-        elif tag == "Du2":
-            feats.append("Number=Dual")
-            feats.append("Person=2")
-        elif tag == "Du3":
-            feats.append("Number=Dual")
-            feats.append("Person=3")
-        elif tag == "Pl1":
-            feats.append("Number=Plur")
-            feats.append("Person=1")
-        elif tag == "Pl2":
-            feats.append("Number=Plur")
-            feats.append("Person=2")
-        elif tag == "Pl3":
-            feats.append("Number=Plur")
-            feats.append("Person=3")
-        elif tag == "PxSg1":
-            feats.append("Number[psor]=Sing")
-            feats.append("Person[psor]=1")
-        elif tag == "PxSg2":
-            feats.append("Number[psor]=Sing")
-            feats.append("Person[psor]=2")
-        elif tag == "PxSg3":
-            feats.append("Number[psor]=Sing")
-            feats.append("Person[psor]=3")
-        elif tag == "PxDu1":
-            feats.append("Number[psor]=Dual")
-            feats.append("Person[psor]=1")
-        elif tag == "PxDu2":
-            feats.append("Number[psor]=Dual")
-            feats.append("Person[psor]=2")
-        elif tag == "PxDu3":
-            feats.append("Number[psor]=Dual")
-            feats.append("Person[psor]=3")
-        elif tag == "PxPl1":
-            feats.append("Number[psor]=Plur")
-            feats.append("Person[psor]=1")
-        elif tag == "PxPl2":
-            feats.append("Number[psor]=Plur")
-            feats.append("Person[psor]=2")
-        elif tag == "PxPl3":
-            feats.append("Number[psor]=Plur")
-            feats.append("Person[psor]=3")
-        elif tag == "PrsPrc":
-            feats.append("VerbForm=Part")
-            feats.append("Tense=Pres")
-        elif tag == "PrfPrc":
-            feats.append("VerbForm=Part")
-            feats.append("Tense=Past")
-        elif tag == "Indef":
-            feats.append("PronType=Ind")
-        elif tag == "Recipr":
-            feats.append("PronType=Rec")
-        elif tag == "Dem":
-            feats.append("PronType=Dem")
-        elif tag == "Interr":
-            feats.append("PronType=Int")
-        elif tag == "Rel":
-            feats.append("PronType=Rel")
-        elif tag == "Pers":
-            feats.append("PronType=Pers")
-        elif tag == "Refl":
-            feats.append("Reflex=Yes")
-        elif tag == "Ord":
-            feats.append("NumType=Ord")
-        elif tag == "Coll":
-            feats.append("NumType=Sets")
-        elif tag == "Neg":
-            feats.append("Polarity=Neg")
-        elif tag == "ConNeg":
-            feats.append("Connegative=Yes")
-        elif tag == "ABBR":
-            feats.append("Abbr=Yes")
-        elif tag == "ACR":
-            feats.append("Abbr=Yes")
-        elif tag == "Err/Orth":
-            feats.append("Typo=Yes")
-        elif tag == "Err/MissingSpace":
-            feats.append("Typo=Yes")
-        elif tag == "Err/Lex":
-            continue
+        if tag in GIELLA2UFEATS:
+            feats.append(GIELLA2UFEATS[tag])
         elif tag.startswith("Foc/"):
             feats.append("Clitic=" + tag[4:])
-        elif tag == "Qst":
-            continue  # XXX: this should be something
-        elif tag == "Inf":
-            feats.append("VerbForm=Inf")
-        elif tag == "Actio":
-            feats.append("VerbForm=Inf?")
-        elif tag == "VAbess":
-            feats.append("VerbForm=Inf?")
-            feats.append("Case=Abe")
-        elif tag == "VGen":
-            feats.append("VerbForm=Inf?")
-            feats.append("Case=Gen")
-        elif tag == "Ger":
-            feats.append("VerbForm=Ger")
-        elif tag == "Sup":
-            feats.append("VerbForm=Sup")
-        elif tag.startswith("Gram/TAbbr"):
-            continue
-        elif tag.startswith("Cmp"):
-            continue
-        elif tag.startswith("<") and tag.endswith(">"):
-            continue
-        elif tag in ["TV", "IV"]:
-            continue
         elif tag.startswith("Ex/"):
             continue
         elif tag.startswith("Der/"):
@@ -803,33 +734,12 @@ def get_ufeats(tags: list, lemma: str = "", surf: str = ""):
             continue  # XXX
         elif tag.startswith("RIGHT"):
             continue  # XXX
-        elif tag in ["Rom", "Arab"]:
-            continue
         elif tag.startswith("Dyn"):
             continue
-        elif tag == "Attr":
-            continue  # XXX: check if should be upd in ud standards?
-        elif tag == "Sg1":
-            feats.append("Number=Sing")
-            feats.append("Person=1")
-        elif tag == "Sg2":
-            feats.append("Number=Sing")
-            feats.append("Person=2")
-        elif tag == "Sg3":
-            feats.append("Number=Sing")
-            feats.append("Person=3")
-        elif tag == "Subqst":
-            continue  # FIXME what is this?
-        elif tag == "Logo":
-            continue  # FIXME what is this?
-        elif tag == "ImprtII":
-            continue  # FIXME what is this?
-        elif tag == "Allegro":
+        elif tag.startswith("Cmp"):
             continue
-        elif tag == "NomAg":
+        elif tag.startswith("<") and tag.endswith(">"):
             continue
-        elif tag == "Known":
-            continue  # ???
         elif tag.startswith("@"):
             continue
         elif tag.startswith("SUBSTITUTE:") or tag.startswith("REMOVE:") or \
