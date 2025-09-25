@@ -10,7 +10,7 @@ from argparse import ArgumentParser, FileType
 from sys import stderr, stdin, stdout
 from time import perf_counter, process_time
 
-from .tagmaps import giella2unimorph
+from .unimorph import giella2unimorph
 
 
 def main():

@@ -12,7 +12,7 @@ from sys import stderr, stdin, stdout
 from time import perf_counter, process_time
 
 from .hfst import load_hfst, remove_flags
-from .tagmaps import giella2unimorph
+from .unimorph import giella2unimorph
 
 
 def main():

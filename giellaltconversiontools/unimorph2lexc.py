@@ -4,7 +4,7 @@ import sys
 from argparse import ArgumentParser, FileType
 
 from .lexc import print_lexc_preamble
-from .tagmaps import unimorph2giella
+from .unimorph import unimorph2giella
 
 
 def main():

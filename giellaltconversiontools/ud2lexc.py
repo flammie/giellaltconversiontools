@@ -5,7 +5,7 @@ import sys
 from argparse import ArgumentParser, FileType
 
 from .lexc import lexc_escape, print_lexc_preamble
-from .tagmaps import ud2giella
+from .ud import ud2giella
 
 
 def main():

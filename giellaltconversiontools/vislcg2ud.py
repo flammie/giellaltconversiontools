@@ -4,7 +4,8 @@
 import sys
 from argparse import ArgumentParser, FileType
 
-from .tagmaps import get_upos, get_xpos, get_ufeats, get_dep
+from .ud import get_dep, get_ufeats, get_upos, get_xpos
+
 
 def print_sent(sent: list, sent_id: str, orig: str, outfile):
     """Print CONLL-U format for single sentence."""

@@ -2,7 +2,7 @@
 '''CLI program to turn unimorph data to GiellaLT.'''
 import sys
 
-from .tagmaps import unimorph2giella
+from .unimorph import unimorph2giella
 
 
 def main():
