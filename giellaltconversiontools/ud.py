@@ -441,6 +441,7 @@ GIELLA2UFEATS = {
          "Sg1": ["Number=Sing", "Person=1"],
          "Sg2": ["Number=Sing", "Person=2"],
          "Sg3": ["Number=Sing", "Person=3"],
+         "Du1": ["Number=Dual", "Person=1"],
          "Du2": ["Number=Dual", "Person=2"],
          "Du3": ["Number=Dual", "Person=3"],
          "Pl1": ["Number=Plur", "Person=1"],
@@ -719,7 +720,8 @@ def get_ufeats(tags: list, lemma: str = "", surf: str = ""):
     feats = []
     for tag in tags:
         if tag in GIELLA2UFEATS:
-            feats.append(GIELLA2UFEATS[tag])
+            for feat in GIELLA2UFEATS[tag]:
+                feats.append(feat)
         elif tag.startswith("Foc/"):
             feats.append("Clitic=" + tag[4:])
         elif tag.startswith("Ex/"):
